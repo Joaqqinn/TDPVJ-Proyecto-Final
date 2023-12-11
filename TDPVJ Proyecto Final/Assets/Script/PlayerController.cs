@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private float movementInputDirection;
     private bool isFacingRight = true;
+    private int facingDirection = 1;
+    private int amountOfJumpsLeft;
+
+    public int amountOfJumps = 1;
 
     public bool isWalking;
     public bool isGrounded;
@@ -19,6 +23,15 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed = 5.0f;
     public float jumpForce = 16.0f;
     public float wallSlideSpeed;
+    public float movementForceInAir;
+    public float airDragMultipier = 0.95f;
+    public float variableJumpeHeightMultiplier = 0.5f;
+    public float wallHopForce;
+    public float wallJumpForce;
+
+    public Vector2 wallHopDirection;
+    public Vector2 wallJumpDirection;
+
     //Ground
     public float groundCheckRadius;
     public Transform groundCheck;
@@ -31,6 +44,9 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        amountOfJumpsLeft = amountOfJumps;
+        wallHopDirection.Normalize();
+        wallJumpDirection.Normalize();
     }
     private void Update()
     {
@@ -53,13 +69,18 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckIfCanJump()
     {
-        if(isGrounded && rb.velocity.y <= 0.01f)
+        if((isGrounded && rb.velocity.y <= 0.01f) || isWallSliding)
         {
-            canJump = true;
+            amountOfJumpsLeft = amountOfJumps;
+        }
+
+        if(amountOfJumpsLeft <= 0)
+        {
+            canJump = false;
         }
         else
         {
-            canJump = false;
+            canJump = true;
         }
     }
     private void CheckIfWallSliding()
@@ -99,12 +120,32 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+
+        if(Input.GetButtonUp("Jump"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpeHeightMultiplier);
+        }
     }
     private void Jump()
     {
-        if(canJump)
+        if (canJump && !isWallSliding)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            amountOfJumpsLeft--;
+        }
+        else if (isWallSliding && movementInputDirection == 0 && canJump) //Wall Hop 
+        {
+            isWallSliding = false;
+            amountOfJumpsLeft--;
+            Vector2 forceToAdd = new Vector2(wallHopForce * wallHopDirection.x * -facingDirection, wallHopForce * wallHopDirection.y);
+            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+        }
+        else if ((isWallSliding || isWall) && movementInputDirection != 0 && canJump)
+        {
+            isWallSliding = false;
+            amountOfJumpsLeft--;
+            Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * movementInputDirection, wallJumpForce * wallJumpDirection.y);
+            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
         }
     }
     private void ApplyMovement()
@@ -112,6 +153,20 @@ public class PlayerController : MonoBehaviour
         if(isGrounded)
         {
             rb.velocity = new Vector2(movementSpeed * movementInputDirection, rb.velocity.y);
+        }
+        else if(!isGrounded && !isWallSliding && movementInputDirection != 0)
+        {
+            Vector2 forceToAdd = new Vector2(movementForceInAir * movementInputDirection, 0);
+            rb.AddForce(forceToAdd);
+
+            if(Mathf.Abs(rb.velocity.x) > movementSpeed)
+            {
+                rb.velocity = new Vector2(movementSpeed * movementInputDirection, rb.velocity.y);
+            }
+        }
+        else if(!isGrounded && !isWallSliding && movementInputDirection == 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x * airDragMultipier, rb.velocity.y);
         }
 
         if(isWallSliding)
@@ -127,6 +182,7 @@ public class PlayerController : MonoBehaviour
     {
         if(!isWallSliding)
         {
+            facingDirection *= -1;
             isFacingRight = !isFacingRight;
             transform.Rotate(0.0f, 180.0f, 0.0f);
         }   
