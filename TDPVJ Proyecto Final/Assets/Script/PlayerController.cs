@@ -194,6 +194,15 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+
+        if(Mathf.Abs(rb.velocity.x) >= 0.01f)
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
     }
     private void UpdateAnimations()
     {
@@ -377,7 +386,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    public void DisableFlip()
+    {
+        canFlip = false;
+    }
+    public void EnableFlip()
+    {
+        canFlip = true;
+    }
     private void Flip()
     {
         if(!isWallSliding && !canClimbLedge)
