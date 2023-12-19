@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
 
     private bool isFacingRight = true;
-    private bool isWalking;
+    //private bool isWalking;
     private bool isGrounded;
     private bool isWall;
     private bool isWallSliding;
@@ -197,11 +197,11 @@ public class PlayerController : MonoBehaviour
 
         if(Mathf.Abs(rb.velocity.x) >= 0.01f)
         {
-            isWalking = true;
+            //isWalking = true;
         }
         else
         {
-            isWalking = false;
+            //isWalking = false;
         }
     }
     private void UpdateAnimations()
