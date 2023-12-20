@@ -11,7 +11,7 @@ public class PlayerGroundedState : PlayerState
     protected bool isTouchingCeiling;
 
     private bool JumpInput;
-    private bool grabInput;
+    //private bool grabInput;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isTouchingLedge;
@@ -26,9 +26,9 @@ public class PlayerGroundedState : PlayerState
         base.DoChecks();
 
         isGrounded = core.CollisionSenses.Ground;
-        /*isTouchingWall = core.CollisionSenses.WallFront;
-        isTouchingLedge = core.CollisionSenses.LedgeHorizontal;
-        isTouchingCeiling = core.CollisionSenses.Ceiling;*/
+        isTouchingWall = core.CollisionSenses.WallFront;
+        //isTouchingLedge = core.CollisionSenses.LedgeHorizontal;
+        //isTouchingCeiling = core.CollisionSenses.Ceiling;
     }
 
     public override void Enter()
@@ -51,7 +51,7 @@ public class PlayerGroundedState : PlayerState
         xInput = player.InputHandler.NormInputX;
         yInput = player.InputHandler.NormInputY;
         JumpInput = player.InputHandler.JumpInput;
-        grabInput = player.InputHandler.GrabInput;
+        //grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
 
         if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling)

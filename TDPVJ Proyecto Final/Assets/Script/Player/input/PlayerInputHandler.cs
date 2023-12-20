@@ -16,7 +16,7 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormInputY { get; private set; }
     public bool JumpInput { get; private set; }
     public bool JumpInputStop { get; private set; }
-    public bool GrabInput { get; private set; }
+    //public bool GrabInput { get; private set; }
     public bool DashInput { get; private set; }
     public bool DashInputStop { get; private set; }
 
@@ -94,7 +94,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    public void OnGrabInput(InputAction.CallbackContext context)
+    /*public void OnGrabInput(InputAction.CallbackContext context)
     {
         if (context.started)
         {
@@ -105,7 +105,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             GrabInput = false;
         }
-    }
+    }*/
 
     public void OnDashInput(InputAction.CallbackContext context)
     {
