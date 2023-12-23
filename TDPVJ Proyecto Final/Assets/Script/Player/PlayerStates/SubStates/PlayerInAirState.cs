@@ -38,7 +38,7 @@ public class PlayerInAirState : PlayerState
 
         isGrounded = core.CollisionSenses.Ground;
         isTouchingWall = core.CollisionSenses.WallFront;
-        //isTouchingWallBack = core.CollisionSenses.WallBack;
+        isTouchingWallBack = core.CollisionSenses.WallBack;
         //isTouchingLedge = core.CollisionSenses.LedgeHorizontal;
 
         if(isTouchingWall && !isTouchingLedge)
@@ -102,8 +102,8 @@ public class PlayerInAirState : PlayerState
         {
             StopWallJumpCoyoteTime();
             isTouchingWall = core.CollisionSenses.WallFront;
-            //player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
-            //stateMachine.ChangeState(player.WallJumpState);
+            player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
+            stateMachine.ChangeState(player.WallJumpState);
         }
         else if(jumpInput && player.JumpState.CanJump())
         {
@@ -127,7 +127,7 @@ public class PlayerInAirState : PlayerState
             core.Movement.SetVelocityX(playerData.movementVelocity * xInput);
 
             player.Anim.SetFloat("yVelocity", core.Movement.CurrentVelocity.y);
-            //player.Anim.SetFloat("xVelocity", Mathf.Abs(core.Movement.CurrentVelocity.x));//        BORRAR !!!!!!!!!!!!!!!
+            player.Anim.SetFloat("xVelocity", Mathf.Abs(core.Movement.CurrentVelocity.x));
         }
 
     }

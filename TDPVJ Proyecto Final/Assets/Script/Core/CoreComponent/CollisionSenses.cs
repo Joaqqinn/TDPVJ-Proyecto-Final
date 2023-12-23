@@ -47,8 +47,8 @@ public class CollisionSenses : CoreComponent
         get => Physics2D.Raycast(ledgeCheck.position, Vector2.right * core.Movement.FacingDirection, wallCheckDistance, whatIsGround);
     }*/
 
-    /*public bool WallBack
+    public bool WallBack
     {
         get => Physics2D.Raycast(wallCheck.position, Vector2.right * -core.Movement.FacingDirection, wallCheckDistance, whatIsGround);
-    }*/
+    }
 }
