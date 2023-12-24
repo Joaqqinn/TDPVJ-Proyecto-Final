@@ -38,6 +38,9 @@ TextureImporter:
   - first:
       213: 8618738265421666027
     second: Viking(Ice Axe)NoEffect-Sheet_11
+  - first:
+      213: 879723860106572348
+    second: Viking(Ice Axe)NoEffect-Sheet_12
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -136,7 +139,7 @@ TextureImporter:
         width: 33
         height: 46
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,9 +158,9 @@ TextureImporter:
         x: 155
         y: 349
         width: 33
-        height: 46
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,12 +176,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_2
       rect:
         serializedVersion: 2
-        x: 257
-        y: 348
+        x: 258
+        y: 349
         width: 46
-        height: 46
+        height: 45
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,12 +197,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_3
       rect:
         serializedVersion: 2
-        x: 36
-        y: 265
-        width: 34
-        height: 46
+        x: 389
+        y: 349
+        width: 27
+        height: 51
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,12 +218,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_4
       rect:
         serializedVersion: 2
-        x: 151
+        x: 36
         y: 265
         width: 34
         height: 46
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,12 +239,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_5
       rect:
         serializedVersion: 2
-        x: 258
+        x: 151
         y: 265
-        width: 46
-        height: 46
+        width: 34
+        height: 43
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,12 +260,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_6
       rect:
         serializedVersion: 2
-        x: 28
-        y: 181
+        x: 258
+        y: 265
         width: 46
-        height: 46
+        height: 45
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -278,12 +281,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_7
       rect:
         serializedVersion: 2
-        x: 143
+        x: 28
         y: 181
         width: 46
-        height: 46
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -299,12 +302,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_8
       rect:
         serializedVersion: 2
-        x: 258
+        x: 143
         y: 181
         width: 46
-        height: 46
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -320,12 +323,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_9
       rect:
         serializedVersion: 2
-        x: 29
-        y: 97
+        x: 258
+        y: 181
         width: 46
-        height: 46
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -341,12 +344,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_10
       rect:
         serializedVersion: 2
-        x: 143
-        y: 98
+        x: 29
+        y: 97
         width: 46
-        height: 46
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -362,12 +365,12 @@ TextureImporter:
       name: Viking(Ice Axe)NoEffect-Sheet_11
       rect:
         serializedVersion: 2
-        x: 260
+        x: 144
         y: 97
         width: 46
-        height: 46
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -375,6 +378,27 @@ TextureImporter:
       bones: []
       spriteID: be65682d9c8eb9770800000000000000
       internalID: 8618738265421666027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Viking(Ice Axe)NoEffect-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 97
+        width: 46
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3276169038653c00800000000000000
+      internalID: 879723860106572348
       vertices: []
       indices: 
       edges: []

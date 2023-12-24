@@ -22,8 +22,8 @@ MonoBehaviour:
   variableJumpHeightMultiplier: 0.5
   wallSlideVelocity: 2
   wallClimbVelocity: 3
-  startOffset: {x: 0, y: 0}
-  stopOffset: {x: 0, y: 0}
+  startOffset: {x: 0.7, y: 1.5}
+  stopOffset: {x: 0.5, y: 0.75}
   dashCooldown: 0.5
   maxHoldTime: 1
   holdTimeScale: 0.25

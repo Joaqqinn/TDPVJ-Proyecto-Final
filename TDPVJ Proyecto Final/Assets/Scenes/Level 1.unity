@@ -43012,6 +43012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 191853277}
   wallCheck: {fileID: 532745637}
+  ledgeCheck: {fileID: 42573067}
   groundCheckRadius: 0.5
   wallCheckDistance: 0.56
   whatIsGround:

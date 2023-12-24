@@ -32,11 +32,11 @@ public class PlayerTouchingWallState : PlayerState
 
         isGrounded = core.CollisionSenses.Ground;
         isTouchingWall = core.CollisionSenses.WallFront;
-        //isTouchingLedge = core.CollisionSenses.Ledge;
+        isTouchingLedge = core.CollisionSenses.Ledge;
 
         if(isTouchingWall && !isTouchingLedge)
         {
-            //player.LedgeClimbState.SetDetectedPosition(player.transform.position);
+            player.LedgeClimbState.SetDetectedPosition(player.transform.position);
         }
     }
 
@@ -74,7 +74,7 @@ public class PlayerTouchingWallState : PlayerState
         }
         else if(isTouchingWall && !isTouchingLedge)
         {
-            //stateMachine.ChangeState(player.LedgeClimbState);
+            stateMachine.ChangeState(player.LedgeClimbState);
         }
     }
 
