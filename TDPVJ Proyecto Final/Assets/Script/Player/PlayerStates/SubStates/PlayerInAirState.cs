@@ -117,10 +117,10 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.WallSlideState);
         }
-        /*else if(dashInput && player.DashState.CheckIfCanDash())
+        else if(dashInput && player.DashState.CheckIfCanDash())
         {
             stateMachine.ChangeState(player.DashState);
-        }*/
+        }
         else
         {
             core.Movement.CheckIfShouldFlip(xInput);
