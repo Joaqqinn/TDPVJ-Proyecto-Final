@@ -32,6 +32,5 @@ MonoBehaviour:
   drag: 10
   dashEndYMultiplier: 0.2
   distBetweenAfterImages: 0.5
-  crouchMovementVelocity: 5
-  crouchColliderHeight: 0.8
-  standColliderHeight: 1.6
+  crouchColliderHeight: 1
+  standColliderHeight: 1

@@ -9,7 +9,7 @@ public class CollisionSenses : CoreComponent
     public Transform GroundCheck { get => groundCheck; private set => groundCheck = value; }
     public Transform WallCheck { get => wallCheck; private set => wallCheck = value; }
     public Transform LedgeCheck { get => ledgeCheck; private set => ledgeCheck = value; }
-    //public Transform CeilingCheck { get => ceilingCheck; private set => ceilingCheck = value; }
+    public Transform CeilingCheck { get => ceilingCheck; private set => ceilingCheck = value; }
     public float GroundCheckRadius { get => groundCheckRadius; set => groundCheckRadius = value; }
     public float WallCheckDistance { get => wallCheckDistance; set => wallCheckDistance = value; }
     public LayerMask WhatIsGround { get => whatIsGround; set => whatIsGround = value; }
@@ -18,7 +18,7 @@ public class CollisionSenses : CoreComponent
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private Transform ledgeCheck;
-    //[SerializeField] private Transform ceilingCheck;
+    [SerializeField] private Transform ceilingCheck;
 
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private float wallCheckDistance;
@@ -27,10 +27,10 @@ public class CollisionSenses : CoreComponent
 
     #endregion
 
-    /*public bool Ceiling
+    public bool Ceiling
     {
         get => Physics2D.OverlapCircle(ceilingCheck.position, groundCheckRadius, whatIsGround);
-    }*/
+    }
 
     public bool Ground
     {

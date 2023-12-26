@@ -28,7 +28,7 @@ public class PlayerGroundedState : PlayerState
         isGrounded = core.CollisionSenses.Ground;
         isTouchingWall = core.CollisionSenses.WallFront;
         isTouchingLedge = core.CollisionSenses.Ledge;
-        //isTouchingCeiling = core.CollisionSenses.Ceiling;
+        isTouchingCeiling = core.CollisionSenses.Ceiling;
     }
 
     public override void Enter()

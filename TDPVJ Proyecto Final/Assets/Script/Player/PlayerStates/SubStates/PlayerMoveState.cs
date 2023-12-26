@@ -32,16 +32,9 @@ public class PlayerMoveState : PlayerGroundedState
 
         core.Movement.SetVelocityX(playerData.movementVelocity * xInput);
 
-        if (!isExitingState)
+        if (xInput == 0 && !isExitingState)
         {
-            if (xInput == 0)
-            {
-                stateMachine.ChangeState(player.IdleState);
-            }
-            else if (yInput == -1)
-            {
-                //stateMachine.ChangeState(player.CrouchMoveState);
-            }
+            stateMachine.ChangeState(player.IdleState);
         }
     }
 
