@@ -50067,10 +50067,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.5, y: 3.4375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2123639282
@@ -50085,6 +50085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425eea51bba5d2e4196b1ec0bbffcc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: b1244c5f89b07454b9ee18b5599e914c, type: 2}
 --- !u!1001 &5605872441138814779
 PrefabInstance:
   m_ObjectHideFlags: 0
