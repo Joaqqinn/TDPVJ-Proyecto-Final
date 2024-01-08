@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c828d7146bf4634baa3fee368a0ca73, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
+  movementSpeed:
+  - 3
+  - 4
+  - 2

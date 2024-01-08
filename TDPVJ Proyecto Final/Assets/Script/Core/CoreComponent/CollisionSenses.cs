@@ -6,10 +6,26 @@ public class CollisionSenses : CoreComponent
 {
     #region Check Transforms
 
-    public Transform GroundCheck { get => groundCheck; private set => groundCheck = value; }
-    public Transform WallCheck { get => wallCheck; private set => wallCheck = value; }
-    public Transform LedgeCheck { get => ledgeCheck; private set => ledgeCheck = value; }
-    public Transform CeilingCheck { get => ceilingCheck; private set => ceilingCheck = value; }
+    public Transform GroundCheck
+    {
+        get => GenericNotImplementedError<Transform>.TryGet(groundCheck, core.transform.parent.name);
+        private set => groundCheck = value;
+    }
+    public Transform WallCheck
+    {
+        get => GenericNotImplementedError<Transform>.TryGet(wallCheck, core.transform.parent.name);
+        private set => wallCheck = value;
+    }
+    public Transform LedgeCheck
+    {
+        get => GenericNotImplementedError<Transform>.TryGet(ledgeCheck, core.transform.parent.name);
+        private set => ledgeCheck = value;
+    }
+    public Transform CeilingCheck
+    {
+        get => GenericNotImplementedError<Transform>.TryGet(ceilingCheck, core.transform.parent.name);
+        private set => ceilingCheck = value;
+    }
     public float GroundCheckRadius { get => groundCheckRadius; set => groundCheckRadius = value; }
     public float WallCheckDistance { get => wallCheckDistance; set => wallCheckDistance = value; }
     public LayerMask WhatIsGround { get => whatIsGround; set => whatIsGround = value; }
