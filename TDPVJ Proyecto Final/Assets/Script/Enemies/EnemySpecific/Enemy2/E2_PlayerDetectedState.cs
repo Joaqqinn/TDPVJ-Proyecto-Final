@@ -38,6 +38,7 @@ public class E2_PlayerDetectedState : PlayerDetectedState
             }
             else
             {
+                Debug.Log("MELEE ATTACK2");
                 //stateMachine.ChangeState(enemy.meleeAttackState);
             }            
         }

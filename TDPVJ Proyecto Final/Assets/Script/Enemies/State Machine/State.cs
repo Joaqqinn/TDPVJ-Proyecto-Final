@@ -24,7 +24,7 @@ public class State
     {
         startTime = Time.time;
         entity.anim.SetBool(animBoolName, true);
-        Debug.Log(animBoolName);
+        //Debug.Log(animBoolName);
         DoChecks();
     }
 

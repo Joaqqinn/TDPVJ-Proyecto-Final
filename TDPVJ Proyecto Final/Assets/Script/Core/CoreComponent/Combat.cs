@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Combat : CoreComponent, IDamageable
+public class Combat : CoreComponent, IDamageable, IKnockbackable
 {
     private bool isKnockbackActive;
     private float knockbackStartTime;

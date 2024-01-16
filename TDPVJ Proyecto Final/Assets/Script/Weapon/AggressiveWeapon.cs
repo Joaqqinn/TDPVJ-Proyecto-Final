@@ -8,7 +8,7 @@ public class AggressiveWeapon : Weapon
     protected SO_AggressiveWeaponData aggressiveWeaponData;
 
     private List<IDamageable> detectedDamageables = new List<IDamageable>();
-    //private List<IKnockbackable> detectedKnockbackables = new List<IKnockbackable>();
+    private List<IKnockbackable> detectedKnockbackables = new List<IKnockbackable>();
 
     protected override void Awake()
     {
@@ -40,15 +40,14 @@ public class AggressiveWeapon : Weapon
             item.Damage(details.damageAmount);
         }
 
-        /*foreach (IKnockbackable item in detectedKnockbackables.ToList())
+        foreach (IKnockbackable item in detectedKnockbackables.ToList())
         {
             item.Knockback(details.knockbackAngle, details.knockbackStrength, core.Movement.FacingDirection);
-        }*/
+        }
     }
 
     public void AddToDetected(Collider2D collision)
     {
-
         IDamageable damageable = collision.GetComponent<IDamageable>();
 
         if (damageable != null)
@@ -56,12 +55,12 @@ public class AggressiveWeapon : Weapon
             detectedDamageables.Add(damageable);
         }
 
-        /*IKnockbackable knockbackable = collision.GetComponent<IKnockbackable>();
+        IKnockbackable knockbackable = collision.GetComponent<IKnockbackable>();
 
         if (knockbackable != null)
         {
             detectedKnockbackables.Add(knockbackable);
-        }*/
+        }
     }
 
     public void RemoveFromDetected(Collider2D collision)
@@ -73,12 +72,21 @@ public class AggressiveWeapon : Weapon
             detectedDamageables.Remove(damageable);
         }
 
-        /*IKnockbackable knockbackable = collision.GetComponent<IKnockbackable>();
+        IKnockbackable knockbackable = collision.GetComponent<IKnockbackable>();
 
         if (knockbackable != null)
         {
             detectedKnockbackables.Remove(knockbackable);
-        }*/
+        }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        AddToDetected(collision);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        RemoveFromDetected(collision);
+    }
 }

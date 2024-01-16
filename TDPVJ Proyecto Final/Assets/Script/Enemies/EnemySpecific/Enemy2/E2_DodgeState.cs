@@ -34,6 +34,7 @@ public class E2_DodgeState : DodgeState
         {
             if(isPlayerInMaxAgroRange && performCloseRangeAction)
             {
+                Debug.Log("MELEE ATTACK1");
                 //stateMachine.ChangeState(enemy.meleeAttackState);
             }
             else if(isPlayerInMaxAgroRange && !performCloseRangeAction)
