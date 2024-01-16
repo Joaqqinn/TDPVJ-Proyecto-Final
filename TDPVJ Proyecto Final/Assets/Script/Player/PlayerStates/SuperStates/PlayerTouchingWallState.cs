@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerTouchingWallState : PlayerState
 {
+
+    protected Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
+    private CollisionSenses CollisionSenses { get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses); }
+
+    private Movement movement;
+    private CollisionSenses collisionSenses;
+
+
     protected bool isGrounded;
     protected bool isTouchingWall;
     protected bool grabInput;
@@ -30,11 +38,14 @@ public class PlayerTouchingWallState : PlayerState
     {
         base.DoChecks();
 
-        isGrounded = core.CollisionSenses.Ground;
-        isTouchingWall = core.CollisionSenses.WallFront;
-        isTouchingLedge = core.CollisionSenses.LedgeHorizontal;
+        if (CollisionSenses)
+        {
+            isGrounded = CollisionSenses.Ground;
+            isTouchingWall = CollisionSenses.WallFront;
+            isTouchingLedge = CollisionSenses.LedgeHorizontal;
+        }
 
-        if(isTouchingWall && !isTouchingLedge)
+        if (isTouchingWall && !isTouchingLedge)
         {
             player.LedgeClimbState.SetDetectedPosition(player.transform.position);
         }
@@ -60,7 +71,7 @@ public class PlayerTouchingWallState : PlayerState
         jumpInput = player.InputHandler.JumpInput;
 
         if (jumpInput)
-        {            
+        {
             player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
             stateMachine.ChangeState(player.WallJumpState);
         }
@@ -68,11 +79,11 @@ public class PlayerTouchingWallState : PlayerState
         {
             stateMachine.ChangeState(player.IdleState);
         }
-        else if(!isTouchingWall || (xInput != core.Movement.FacingDirection && !grabInput))
+        else if (!isTouchingWall || (xInput != Movement?.FacingDirection && !grabInput))
         {
             stateMachine.ChangeState(player.InAirState);
         }
-        else if(isTouchingWall && !isTouchingLedge)
+        else if (isTouchingWall && !isTouchingLedge)
         {
             stateMachine.ChangeState(player.LedgeClimbState);
         }
