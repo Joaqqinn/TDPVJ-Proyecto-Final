@@ -1,12 +1,19 @@
-﻿using System.Collections;
+﻿using Bardent.CoreSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInAirState : PlayerState
 {
+    protected Movement Movement
+    {
+        get => movement ?? core.GetCoreComponent(ref movement);
+    }
 
-    protected Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
-    private CollisionSenses CollisionSenses { get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses); }
+    private CollisionSenses CollisionSenses
+    {
+        get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses);
+    }
 
     private Movement movement;
     private CollisionSenses collisionSenses;

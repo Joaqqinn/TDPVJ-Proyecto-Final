@@ -1,10 +1,10 @@
-﻿using System.Collections;
+﻿using Bardent.CoreSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLedgeClimbState : PlayerState
 {
-
     protected Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
     private CollisionSenses CollisionSenses { get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses); }
 

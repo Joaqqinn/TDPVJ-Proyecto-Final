@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Bardent.CoreSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ public class AttackState : State
     {
         base.Enter();
 
-        entity.atsm.attackState = this;
+        //entity.atsm.attackState = this;
         isAnimationFinished = false;
         Movement?.SetVelocityX(0f);
     }

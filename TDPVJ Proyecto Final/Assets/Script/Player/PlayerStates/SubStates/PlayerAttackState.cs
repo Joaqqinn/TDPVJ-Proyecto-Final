@@ -1,83 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Bardent.Weapons;
 using UnityEngine;
 
 public class PlayerAttackState : PlayerAbilityState
 {
     private Weapon weapon;
 
-    private int xInput;
+    private int inputIndex;
 
-    private float velocityToSet;
-
-    private bool setVelocity;
-    private bool shouldCheckFlip;
-
-    public PlayerAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerAttackState(
+        Player player,
+        PlayerStateMachine stateMachine,
+        PlayerData playerData,
+        string animBoolName,
+        Weapon weapon,
+        CombatInputs input
+    ) : base(player, stateMachine, playerData, animBoolName)
     {
-    }
+        this.weapon = weapon;
 
-    public override void Enter()
-    {
-        base.Enter();
+        inputIndex = (int)input;
 
-        setVelocity = false;
-
-        weapon.EnterWeapon();
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-
-        weapon.ExitWeapon();
+        weapon.OnExit += ExitHandler;
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
 
-        xInput = player.InputHandler.NormInputX;
-
-        if (shouldCheckFlip)
-        {
-            Movement?.CheckIfShouldFlip(xInput);
-        }
-
-
-        if (setVelocity)
-        {
-            Movement?.SetVelocityX(velocityToSet * Movement.FacingDirection);
-        }
+        weapon.CurrentInput = player.InputHandler.AttackInputs[inputIndex];
     }
 
-    public void SetWeapon(Weapon weapon)
+    public override void Enter()
     {
-        this.weapon = weapon;
-        this.weapon.InitializeWeapon(this, core);
+        base.Enter();
+
+        weapon.Enter();
     }
 
-    public void SetPlayerVelocity(float velocity)
+    private void ExitHandler()
     {
-        Movement?.SetVelocityX(velocity * Movement.FacingDirection);
-
-        velocityToSet = velocity;
-        setVelocity = true;
-    }
-
-    public void SetFlipCheck(bool value)
-    {
-        shouldCheckFlip = value;
-    }
-
-    #region Animation Triggers
-
-    public override void AnimationFinishTrigger()
-    {
-        base.AnimationFinishTrigger();                
-
+        AnimationFinishTrigger();
         isAbilityDone = true;
     }
-
-    #endregion
 }
