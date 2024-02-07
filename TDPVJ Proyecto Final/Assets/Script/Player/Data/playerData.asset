@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e313d2505ea9e194397e0df55bd7e5c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 65ca48738a7a0264884c833183f68271, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
   movementVelocity: 10
@@ -32,5 +32,6 @@ MonoBehaviour:
   drag: 10
   dashEndYMultiplier: 0.2
   distBetweenAfterImages: 0.5
+  crouchMovementVelocity: 5
   crouchColliderHeight: 1
   standColliderHeight: 1

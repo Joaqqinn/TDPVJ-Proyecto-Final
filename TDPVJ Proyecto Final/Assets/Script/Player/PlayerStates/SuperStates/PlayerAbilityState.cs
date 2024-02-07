@@ -1,18 +1,18 @@
-﻿using Bardent.CoreSystem;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Bardent.CoreSystem;
 using UnityEngine;
 
 public class PlayerAbilityState : PlayerState {
 	protected bool isAbilityDone;
 
-    protected Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
-    private CollisionSenses CollisionSenses { get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses); }
+	protected Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
+	private CollisionSenses CollisionSenses { get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses); }
 
-    private Movement movement;
-    private CollisionSenses collisionSenses;
+	private Movement movement;
+	private CollisionSenses collisionSenses;
 
-    private bool isGrounded;
+	private bool isGrounded;
 
 	public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName) {
 	}

@@ -1,4 +1,4 @@
-using Bardent.CoreSystem;
+﻿using Bardent.CoreSystem;
 using Bardent.Weapons;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,8 +16,6 @@ public class Player : MonoBehaviour
     public PlayerInAirState InAirState { get; private set; }
     public PlayerLandState LandState { get; private set; }
     public PlayerWallSlideState WallSlideState { get; private set; }
-    public PlayerWallGrabState WallGrabState { get; private set; }
-    public PlayerWallClimbState WallClimbState { get; private set; }
     public PlayerWallJumpState WallJumpState { get; private set; }
     public PlayerLedgeClimbState LedgeClimbState { get; private set; }
     public PlayerDashState DashState { get; private set; }
@@ -64,8 +62,6 @@ public class Player : MonoBehaviour
         InAirState = new PlayerInAirState(this, StateMachine, playerData, "inAir");
         LandState = new PlayerLandState(this, StateMachine, playerData, "land");
         WallSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "wallSlide");
-        WallGrabState = new PlayerWallGrabState(this, StateMachine, playerData, "wallGrab");
-        WallClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "wallClimb");
         WallJumpState = new PlayerWallJumpState(this, StateMachine, playerData, "inAir");
         LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "ledgeClimbState");
         DashState = new PlayerDashState(this, StateMachine, playerData, "inAir");

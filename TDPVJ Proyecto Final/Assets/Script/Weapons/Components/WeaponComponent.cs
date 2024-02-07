@@ -1,4 +1,5 @@
-﻿using Bardent.CoreSystem;
+﻿using System;
+using Bardent.CoreSystem;
 using UnityEngine;
 
 namespace Bardent.Weapons.Components
@@ -11,14 +12,15 @@ namespace Bardent.Weapons.Components
         // protected AnimationEventHandler EventHandler => weapon.EventHandler;
         protected AnimationEventHandler eventHandler;
         protected Core Core => weapon.Core;
+        protected float attackStartTime => weapon.AttackStartTime;
 
         protected bool isAttackActive;
 
         public virtual void Init()
         {
-
+            
         }
-
+        
         protected virtual void Awake()
         {
             weapon = GetComponent<Weapon>();

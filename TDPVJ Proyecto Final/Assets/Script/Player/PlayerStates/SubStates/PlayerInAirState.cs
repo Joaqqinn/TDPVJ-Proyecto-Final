@@ -1,6 +1,6 @@
-﻿using Bardent.CoreSystem;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Bardent.CoreSystem;
 using UnityEngine;
 
 public class PlayerInAirState : PlayerState
@@ -39,7 +39,8 @@ public class PlayerInAirState : PlayerState
 
     private float startWallJumpCoyoteTime;
 
-    public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName)
+        : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
@@ -63,7 +64,8 @@ public class PlayerInAirState : PlayerState
             player.LedgeClimbState.SetDetectedPosition(player.transform.position);
         }
 
-        if (!wallJumpCoyoteTime && !isTouchingWall && !isTouchingWallBack && (oldIsTouchingWall || oldIsTouchingWallBack))
+        if (!wallJumpCoyoteTime && !isTouchingWall && !isTouchingWallBack &&
+            (oldIsTouchingWall || oldIsTouchingWallBack))
         {
             StartWallJumpCoyoteTime();
         }
@@ -146,7 +148,6 @@ public class PlayerInAirState : PlayerState
             player.Anim.SetFloat("yVelocity", Movement.CurrentVelocity.y);
             player.Anim.SetFloat("xVelocity", Mathf.Abs(Movement.CurrentVelocity.x));
         }
-
     }
 
     private void CheckJumpMultiplier()
@@ -162,7 +163,6 @@ public class PlayerInAirState : PlayerState
             {
                 isJumping = false;
             }
-
         }
     }
 

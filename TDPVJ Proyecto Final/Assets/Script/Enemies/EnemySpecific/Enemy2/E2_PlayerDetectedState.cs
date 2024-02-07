@@ -32,7 +32,7 @@ public class E2_PlayerDetectedState : PlayerDetectedState
 
         if (performCloseRangeAction)
         {
-            if(Time.time >= enemy.dodgeState.startTime + enemy.dodgeStateData.dodgeCooldown)
+            if (Time.time >= enemy.dodgeState.startTime + enemy.dodgeStateData.dodgeCooldown)
             {
                 stateMachine.ChangeState(enemy.dodgeState);
             }
@@ -40,7 +40,7 @@ public class E2_PlayerDetectedState : PlayerDetectedState
             {
                 Debug.Log("MELEE ATTACK2");
                 //stateMachine.ChangeState(enemy.meleeAttackState);
-            }            
+            }
         }
         else if (performLongRangeAction)
         {

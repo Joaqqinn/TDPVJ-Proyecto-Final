@@ -44,17 +44,17 @@ namespace Bardent.Weapons
                     if (GUILayout.Button(dataCompType.Name))
                     {
                         var comp = Activator.CreateInstance(dataCompType) as ComponentData;
-
-                        if (comp == null)
+                    
+                        if(comp == null)
                             return;
 
                         comp.InitializeAttackData(dataSO.NumberOfAttacks);
-
+                    
                         dataSO.AddData(comp);
-
+                        
                         EditorUtility.SetDirty(dataSO);
                     }
-                }
+                } 
             }
 
             showForceUpdateButtons = EditorGUILayout.Foldout(showForceUpdateButtons, "Force Update Buttons");
@@ -68,7 +68,7 @@ namespace Bardent.Weapons
                         item.SetComponentName();
                     }
                 }
-
+            
                 if (GUILayout.Button("Force Update Attack Names"))
                 {
                     foreach (var item in dataSO.ComponentData)

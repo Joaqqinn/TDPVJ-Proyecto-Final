@@ -1,8 +1,8 @@
-using Bardent.CoreSystem;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Bardent.CoreSystem;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerState
 {
@@ -59,6 +59,6 @@ public class PlayerState
     public virtual void AnimationTrigger() { }
 
     public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
-
+    
 
 }

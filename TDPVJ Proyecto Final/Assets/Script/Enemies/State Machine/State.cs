@@ -1,13 +1,13 @@
-﻿using Bardent.CoreSystem;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Bardent.CoreSystem;
 using UnityEngine;
 
 public class State
 {
     protected FiniteStateMachine stateMachine;
     protected Entity entity;
-    protected Core core;
+    protected Core core;    
 
     public float startTime { get; protected set; }
 
@@ -25,7 +25,7 @@ public class State
     {
         startTime = Time.time;
         entity.anim.SetBool(animBoolName, true);
-        //Debug.Log(animBoolName);
+        Debug.Log(animBoolName);
         DoChecks();
     }
 

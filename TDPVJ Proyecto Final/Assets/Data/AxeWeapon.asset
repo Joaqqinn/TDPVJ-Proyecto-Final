@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: AxeWeapon
   m_EditorClassIdentifier: 
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: 60d746d0024b31b48934df5a66dbc67a, type: 2}
   <NumberOfAttacks>k__BackingField: 3
   <ComponentData>k__BackingField:
   - id: 0
@@ -65,7 +66,7 @@ MonoBehaviour:
             height: 2.96
         <DetectableLayers>k__BackingField:
           serializedVersion: 2
-          m_Bits: 128
+          m_Bits: 512
     00000002:
       type: {class: DamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
