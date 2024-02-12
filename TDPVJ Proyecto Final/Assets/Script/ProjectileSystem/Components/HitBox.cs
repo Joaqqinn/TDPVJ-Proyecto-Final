@@ -1,6 +1,7 @@
 ﻿using System;
 using Bardent.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Bardent.ProjectileSystem.Components
 {
@@ -10,7 +11,8 @@ namespace Bardent.ProjectileSystem.Components
     /// </summary>
     public class HitBox : ProjectileComponent
     {
-        public event Action<RaycastHit2D[]> OnRaycastHit2D;
+        // public event Action<RaycastHit2D[]> OnRaycastHit2D;
+        public UnityEvent<RaycastHit2D[]> OnRaycastHit2D; 
 
         [field: SerializeField] public Rect HitBoxRect { get; private set; }
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
@@ -27,7 +29,7 @@ namespace Bardent.ProjectileSystem.Components
 
             if (hits.Length <= 0) return;
 
-            OnRaycastHit2D?.Invoke(hits);       
+            OnRaycastHit2D?.Invoke(hits);
         }
 
         #region Plumbing

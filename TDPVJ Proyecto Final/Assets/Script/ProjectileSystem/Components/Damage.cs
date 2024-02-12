@@ -1,4 +1,5 @@
-﻿using Bardent.ProjectileSystem.DataPackages;
+﻿using Bardent.Combat.Damage;
+using Bardent.ProjectileSystem.DataPackages;
 using Bardent.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,8 +12,9 @@ namespace Bardent.ProjectileSystem.Components
      */
     public class Damage : ProjectileComponent
     {
-        public UnityEvent OnDamage;
-        
+        public UnityEvent<IDamageable> OnDamage;
+        public UnityEvent<RaycastHit2D> OnRaycastHit;
+
         [field: SerializeField] public LayerMask LayerMask { get; private set; }
         [field: SerializeField] public bool SetInactiveAfterDamage { get; private set; }
         [field: SerializeField] public float Cooldown { get; private set; }
@@ -48,9 +50,10 @@ namespace Bardent.ProjectileSystem.Components
                 if (!hit.collider.transform.gameObject.TryGetComponent(out IDamageable damageable))
                     continue;
                 
-                damageable.Damage(amount);
+                damageable.Damage(new DamageData(amount, projectile.gameObject));
                 
-                OnDamage?.Invoke();
+                OnDamage?.Invoke(damageable);
+                OnRaycastHit?.Invoke(hit);
 
                 lastDamageTime = Time.time;
 
@@ -68,7 +71,7 @@ namespace Bardent.ProjectileSystem.Components
         {
             base.HandleReceiveDataPackage(dataPackage);
 
-            if (!(dataPackage is DamageDataPackage package))
+            if (dataPackage is not DamageDataPackage package)
                 return;
 
             amount = package.Amount;
@@ -82,14 +85,14 @@ namespace Bardent.ProjectileSystem.Components
 
             hitBox = GetComponent<HitBox>();
 
-            hitBox.OnRaycastHit2D += HandleRaycastHit2D;
+            hitBox.OnRaycastHit2D.AddListener(HandleRaycastHit2D);
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
-            hitBox.OnRaycastHit2D -= HandleRaycastHit2D;
+            hitBox.OnRaycastHit2D.RemoveListener(HandleRaycastHit2D);
         }
 
         #endregion

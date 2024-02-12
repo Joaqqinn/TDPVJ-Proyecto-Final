@@ -52,22 +52,22 @@ namespace Bardent.Weapons.Components
             base.Start();
 
             baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
-            //weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
+            weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
             
             data = weapon.Data.GetData<WeaponSpriteData>();
             
-            //baseSpriteRenderer.RegisterSpriteChangeCallback(HandleBaseSpriteChange);
+            baseSpriteRenderer.RegisterSpriteChangeCallback(HandleBaseSpriteChange);
 
-            eventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
+            AnimationEventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
             
-            //baseSpriteRenderer.UnregisterSpriteChangeCallback(HandleBaseSpriteChange);
+            baseSpriteRenderer.UnregisterSpriteChangeCallback(HandleBaseSpriteChange);
             
-            eventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
+            AnimationEventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
         }
     }
 }

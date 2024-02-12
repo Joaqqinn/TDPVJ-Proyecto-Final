@@ -18,7 +18,6 @@ MonoBehaviour:
   - id: 0
   - id: 1
   - id: 2
-  - id: 3
   references:
     version: 1
     00000000:
@@ -78,17 +77,3 @@ MonoBehaviour:
           <Amount>k__BackingField: 10
         - name: Attack 3
           <Amount>k__BackingField: 15
-    00000003:
-      type: {class: KnockBackData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
-      data:
-        name: KnockBackData
-        attackData:
-        - name: Attack 1
-          <Angle>k__BackingField: {x: 1, y: 1}
-          <Strength>k__BackingField: 10
-        - name: Attack 2
-          <Angle>k__BackingField: {x: 1, y: 1}
-          <Strength>k__BackingField: 10
-        - name: Attack 3
-          <Angle>k__BackingField: {x: 1, y: 3}
-          <Strength>k__BackingField: 20

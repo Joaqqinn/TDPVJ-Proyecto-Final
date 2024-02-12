@@ -12,29 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Sword_1
   m_EditorClassIdentifier: 
+  <AnimatorController>k__BackingField: {fileID: 0}
   <NumberOfAttacks>k__BackingField: 3
   <ComponentData>k__BackingField:
-  - rid: 5662276240811753472
-  - rid: 4372344435206258688
-  - rid: 4372345045472247809
+  - id: 0
+  - id: 1
+  - id: 2
   references:
-    version: 2
-    RefIds:
-    - rid: 4372344435206258688
-      type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
-      data:
-        name: MovementData
-        attackData:
-        - name: Attack 1
-          <Direction>k__BackingField: {x: 1, y: 0}
-          <Velocity>k__BackingField: 3
-        - name: Attack 2
-          <Direction>k__BackingField: {x: 1, y: 0}
-          <Velocity>k__BackingField: 4
-        - name: Attack 3
-          <Direction>k__BackingField: {x: 1, y: 5}
-          <Velocity>k__BackingField: 5
-    - rid: 4372345045472247809
+    version: 1
+    00000000:
       type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: ActionHitBoxData
@@ -43,52 +29,63 @@ MonoBehaviour:
           Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
-            x: 0.11
-            y: -0.9
-            width: 1.94
-            height: 1.41
+            x: 0
+            y: 0
+            width: 0
+            height: 0
         - name: Attack 2
           Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
-            x: 0.11
-            y: -0.9
-            width: 1.94
-            height: 1.41
+            x: 0
+            y: 0
+            width: 0
+            height: 0
         - name: Attack 3
           Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0
-            y: -0.99
-            width: 1.61
-            height: 2.51
+            y: 0
+            width: 0
+            height: 0
         <DetectableLayers>k__BackingField:
           serializedVersion: 2
-          m_Bits: 512
-    - rid: 5662276240811753472
-      type: {class: WeaponSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+          m_Bits: 0
+    00000001:
+      type: {class: ChargeData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
-        name: WeaponSpriteData
+        name: ChargeData
         attackData:
         - name: Attack 1
-          <Sprites>k__BackingField:
-          - {fileID: -1780751373, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: 577957028, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: -509565249, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: 680478193, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: 365328359, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          <ChargeTime>k__BackingField: 0
+          <InitialChargeAmount>k__BackingField: 0
+          <NumberOfCharges>k__BackingField: 0
+          <ChargeIncreaseIndicatorParticlePrefab>k__BackingField: {fileID: 0}
+          <FullyChargedIndicatorParticlePrefab>k__BackingField: {fileID: 0}
+          <ParticlesOffset>k__BackingField: {x: 0, y: 0}
         - name: Attack 2
-          <Sprites>k__BackingField:
-          - {fileID: 1469980136, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: 1160239679, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: -1537962721, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: 342834816, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: 683960273, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          <ChargeTime>k__BackingField: 0
+          <InitialChargeAmount>k__BackingField: 0
+          <NumberOfCharges>k__BackingField: 0
+          <ChargeIncreaseIndicatorParticlePrefab>k__BackingField: {fileID: 0}
+          <FullyChargedIndicatorParticlePrefab>k__BackingField: {fileID: 0}
+          <ParticlesOffset>k__BackingField: {x: 0, y: 0}
         - name: Attack 3
-          <Sprites>k__BackingField:
-          - {fileID: -84422829, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: -1669289994, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: -312529561, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: -1032906865, guid: 3179c16b297295440b9749aff89377e2, type: 3}
-          - {fileID: 621078435, guid: 3179c16b297295440b9749aff89377e2, type: 3}
+          <ChargeTime>k__BackingField: 0
+          <InitialChargeAmount>k__BackingField: 0
+          <NumberOfCharges>k__BackingField: 0
+          <ChargeIncreaseIndicatorParticlePrefab>k__BackingField: {fileID: 0}
+          <FullyChargedIndicatorParticlePrefab>k__BackingField: {fileID: 0}
+          <ParticlesOffset>k__BackingField: {x: 0, y: 0}
+    00000002:
+      type: {class: DamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DamageData
+        attackData:
+        - name: Attack 1
+          <Amount>k__BackingField: 0
+        - name: Attack 2
+          <Amount>k__BackingField: 0
+        - name: Attack 3
+          <Amount>k__BackingField: 0

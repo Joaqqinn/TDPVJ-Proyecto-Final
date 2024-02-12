@@ -35,13 +35,13 @@ namespace Bardent.Weapons.Components
 
             movement = new CoreComp<CoreSystem.Movement>(Core);
             
-            eventHandler.OnAttackAction += HandleAttackAction;
+            AnimationEventHandler.OnAttackAction += HandleAttackAction;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            eventHandler.OnAttackAction -= HandleAttackAction;
+            AnimationEventHandler.OnAttackAction -= HandleAttackAction;
         }
 
         private void OnDrawGizmosSelected()
@@ -49,7 +49,7 @@ namespace Bardent.Weapons.Components
             if (data == null)
                 return;
 
-            foreach (var item in data.AttackData)
+            foreach (var item in data.GetAllAttackData())
             {
                 if (!item.Debug)
                     continue;
