@@ -12,8 +12,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: ShieldWeapon
   m_EditorClassIdentifier: 
-  <AnimatorController>k__BackingField: {fileID: 0}
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: cae0b63b23019314a84c3ffe7caff613, type: 2}
   <NumberOfAttacks>k__BackingField: 0
-  <ComponentData>k__BackingField: []
+  <ComponentData>k__BackingField:
+  - id: 0
+  - id: 1
+  - id: 2
+  - id: 3
+  - id: 4
+  - id: 5
+  - id: 6
   references:
     version: 1
+    00000000:
+      type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: InputHoldData
+    00000001:
+      type: {class: BlockData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: BlockData
+        repeatData: 0
+        attackData:
+        - name: 
+          <BlockDirectionInformation>k__BackingField: []
+          <Particles>k__BackingField: {fileID: 8619918458129954762, guid: d4351aec9af290d4581d50f34266eb86, type: 3}
+          <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}
+    00000002:
+      type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: MovementData
+        repeatData: 0
+        attackData:
+        - name: 
+          <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 0
+    00000003:
+      type: {class: DamageOnBlockData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DamageOnBlockData
+        repeatData: 0
+        attackData:
+        - name: 
+          <Amount>k__BackingField: 5
+    00000004:
+      type: {class: ParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: ParryData
+        repeatData: 0
+        attackData:
+        - name: 
+          <ParryDirectionalInformation>k__BackingField:
+          - MinAngle: 0
+            MaxAngle: 0
+            DamageAbsorption: 0
+            KnockBackAbsorption: 0
+            PoiseDamageAbsorption: 0
+          <Particles>k__BackingField: {fileID: 8619918458129954762, guid: d4351aec9af290d4581d50f34266eb86, type: 3}
+          <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}
+    00000005:
+      type: {class: KnockBackOnParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: KnockBackOnParryData
+        repeatData: 0
+        attackData:
+        - name: 
+          <Angle>k__BackingField: {x: 1, y: 1}
+          <Strength>k__BackingField: 10
+    00000006:
+      type: {class: DamageOnParryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: DamageOnParryData
+        repeatData: 0
+        attackData:
+        - name: 
+          <Amount>k__BackingField: 5

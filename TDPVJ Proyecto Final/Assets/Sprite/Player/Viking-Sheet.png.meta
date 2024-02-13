@@ -3024,8 +3024,8 @@ TextureImporter:
         y: 13
         width: 33
         height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.44, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3041,12 +3041,12 @@ TextureImporter:
       name: Viking-Sheet_175
       rect:
         serializedVersion: 2
-        x: 272
+        x: 273
         y: 13
-        width: 44
+        width: 43
         height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.31, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3064,10 +3064,10 @@ TextureImporter:
         serializedVersion: 2
         x: 387
         y: 13
-        width: 46
+        width: 45
         height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3087,8 +3087,8 @@ TextureImporter:
         y: 13
         width: 50
         height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3108,8 +3108,8 @@ TextureImporter:
         y: 13
         width: 50
         height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3129,8 +3129,8 @@ TextureImporter:
         y: 13
         width: 50
         height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3150,8 +3150,8 @@ TextureImporter:
         y: 13
         width: 50
         height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3169,10 +3169,10 @@ TextureImporter:
         serializedVersion: 2
         x: 957
         y: 13
-        width: 44
+        width: 43
         height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.44}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3189,11 +3189,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1071
-        y: 13
-        width: 47
+        y: 14
+        width: 46
         height: 52
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.44}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3230,7 +3230,7 @@ TextureImporter:
       name: Viking-Sheet_188
       rect:
         serializedVersion: 2
-        x: 1305
+        x: 1306
         y: 13
         width: 33
         height: 46

@@ -1,4 +1,5 @@
-﻿using Bardent.Interfaces;
+﻿using Bardent.Combat.PoiseDamage;
+using Bardent.Interfaces;
 using UnityEngine;
 
 namespace Bardent.Weapons.Components
@@ -13,11 +14,11 @@ namespace Bardent.Weapons.Components
             {
                 if (item.TryGetComponent(out IPoiseDamageable poiseDamageable))
                 {
-                    poiseDamageable.DamagePoise(currentAttackData.Amount);
+                    poiseDamageable.DamagePoise(new Combat.PoiseDamage.PoiseDamageData(currentAttackData.Amount, Core.Root));
                 }
             }
         }
-        
+
         protected override void Start()
         {
             base.Start();

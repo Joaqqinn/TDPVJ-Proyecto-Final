@@ -1332,7 +1332,7 @@ PrefabInstance:
     - target: {fileID: 158870405193130967, guid: 6839a592801caa049ac3396d57b9e3a3, type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 11400000, guid: 4a936cdbbada63143b9a868912282179, type: 2}
+      objectReference: {fileID: 11400000, guid: 3a6a4393840ceb04f89578f2a7d6bfc9, type: 2}
     - target: {fileID: 158870405193130967, guid: 6839a592801caa049ac3396d57b9e3a3, type: 3}
       propertyPath: weapon
       value: 
@@ -1607,7 +1607,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9990281, y: 1}
+    m_SensorSize: {x: 2.1214771, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -50253,6 +50253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d0858588cb91c488efaa7dffe2054e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Root>k__BackingField: {fileID: 0}
 --- !u!1 &1968288995
 GameObject:
   m_ObjectHideFlags: 0
@@ -50302,6 +50303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6d0858588cb91c488efaa7dffe2054e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Root>k__BackingField: {fileID: 0}
 --- !u!1 &2024961307
 GameObject:
   m_ObjectHideFlags: 0
@@ -50314,6 +50316,7 @@ GameObject:
   - component: {fileID: 2024961309}
   - component: {fileID: 2024961310}
   - component: {fileID: 2024961311}
+  - component: {fileID: 2024961312}
   m_Layer: 11
   m_Name: Combat
   m_TagString: Untagged
@@ -50387,6 +50390,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageParticles: {fileID: 8619918458129954762, guid: 4b6dd87b6195e8449a780c4f6d0ca3f6, type: 3}
+--- !u!114 &2024961312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024961307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd18f63918404c95511f101e4c8aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2046472263
 GameObject:
   m_ObjectHideFlags: 0
@@ -50488,7 +50503,7 @@ PrefabInstance:
     - target: {fileID: 158870405193130967, guid: 6839a592801caa049ac3396d57b9e3a3, type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 11400000, guid: 8374777c1a0475949b00e75c0ac3fc35, type: 2}
+      objectReference: {fileID: 11400000, guid: 2ac37161742ff2b489c411d4a0b5f2ca, type: 2}
     - target: {fileID: 158870405193130967, guid: 6839a592801caa049ac3396d57b9e3a3, type: 3}
       propertyPath: weapon
       value: 
@@ -50543,11 +50558,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2022310267884698491, guid: 6839a592801caa049ac3396d57b9e3a3, type: 3}
       propertyPath: m_Size.x
-      value: 1.875
+      value: 2.875
       objectReference: {fileID: 0}
     - target: {fileID: 2022310267884698491, guid: 6839a592801caa049ac3396d57b9e3a3, type: 3}
       propertyPath: m_Size.y
-      value: 2.875
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 2022310267884698491, guid: 6839a592801caa049ac3396d57b9e3a3, type: 3}
       propertyPath: m_SortingLayer
@@ -50559,7 +50574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2022310267884698491, guid: 6839a592801caa049ac3396d57b9e3a3, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5276699065985859555, guid: 6839a592801caa049ac3396d57b9e3a3, type: 3}
       propertyPath: attackCounterResetCooldown

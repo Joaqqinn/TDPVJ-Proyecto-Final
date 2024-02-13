@@ -71,7 +71,7 @@ namespace Bardent.ProjectileSystem.Components
         {
             base.HandleReceiveDataPackage(dataPackage);
 
-            if (dataPackage is not DamageDataPackage package)
+            if (!(dataPackage is DamageDataPackage package))
                 return;
 
             amount = package.Amount;

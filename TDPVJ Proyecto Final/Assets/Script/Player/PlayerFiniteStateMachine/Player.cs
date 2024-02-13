@@ -1,9 +1,10 @@
-﻿using Bardent.CoreSystem;
-using Bardent.Weapons;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Bardent.CoreSystem;
+using Bardent.Weapons;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D RB { get; private set; }
     public BoxCollider2D MovementCollider { get; private set; }
     #endregion
+    public Stats Stats { get; private set; }
 
     #region Other Variables         
 
@@ -53,6 +55,8 @@ public class Player : MonoBehaviour
 
         primaryWeapon.SetCore(Core);
         secondaryWeapon.SetCore(Core);
+
+        Stats = Core.GetCoreComponent<Stats>();
 
         StateMachine = new PlayerStateMachine();
 

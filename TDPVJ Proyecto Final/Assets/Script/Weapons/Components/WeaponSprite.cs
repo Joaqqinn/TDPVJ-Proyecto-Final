@@ -7,7 +7,7 @@ namespace Bardent.Weapons.Components
 {
     public class WeaponSprite : WeaponComponent<WeaponSpriteData, AttackSprites>
     {
-        private SpriteRenderer baseSpriteRenderer;
+        //private SpriteRenderer baseSpriteRenderer;
         private SpriteRenderer weaponSpriteRenderer;
         
         private int currentWeaponSpriteIndex;
@@ -51,12 +51,12 @@ namespace Bardent.Weapons.Components
         {
             base.Start();
 
-            baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
-            weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
+            //baseSpriteRenderer = weapon.BaseGameObject.GetComponent<SpriteRenderer>();
+            //weaponSpriteRenderer = weapon.WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
             
             data = weapon.Data.GetData<WeaponSpriteData>();
             
-            baseSpriteRenderer.RegisterSpriteChangeCallback(HandleBaseSpriteChange);
+            //baseSpriteRenderer.RegisterSpriteChangeCallback(HandleBaseSpriteChange);
 
             AnimationEventHandler.OnEnterAttackPhase += HandleEnterAttackPhase;
         }
@@ -65,7 +65,7 @@ namespace Bardent.Weapons.Components
         {
             base.OnDestroy();
             
-            baseSpriteRenderer.UnregisterSpriteChangeCallback(HandleBaseSpriteChange);
+            //baseSpriteRenderer.UnregisterSpriteChangeCallback(HandleBaseSpriteChange);
             
             AnimationEventHandler.OnEnterAttackPhase -= HandleEnterAttackPhase;
         }

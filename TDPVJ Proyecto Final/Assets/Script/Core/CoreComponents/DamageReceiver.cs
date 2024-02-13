@@ -13,11 +13,15 @@ namespace Bardent.CoreSystem
          * Blocking works by assigning a modifier during the active block window of the shield that reduces the amount of damage the player will take. For example: If a shield
          * has a damage absorption property of 0.75 and we deal 10 damage, only 2.5 will actually end up getting removed from player stats after applying the modifier.
          */
-        public Modifiers<Modifier<DamageData>, DamageData> Modifiers { get; } = new();
+        public Modifiers<Modifier<DamageData>, DamageData> Modifiers { get; }
 
         private Stats stats;
         private ParticleManager particleManager;
 
+        public DamageReceiver()
+        {
+            Modifiers = new Modifiers<Modifier<DamageData>, DamageData>();
+        }
 
         public void Damage(DamageData data)
         {

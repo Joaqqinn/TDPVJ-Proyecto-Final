@@ -1,4 +1,5 @@
-﻿using Bardent.Interfaces;
+﻿using Bardent.Combat.PoiseDamage;
+using Bardent.Interfaces;
 using Bardent.ProjectileSystem.DataPackages;
 using Bardent.Utilities;
 using UnityEngine;
@@ -34,9 +35,9 @@ namespace Bardent.ProjectileSystem.Components
                 // NOTE: We need to use .collider.transform instead of just .transform to get the GameObject the collider we detected is attached to, otherwise it returns the parent
                 if (!hit.collider.transform.gameObject.TryGetComponent(out IPoiseDamageable poiseDamageable))
                     continue;
-                
-                poiseDamageable.DamagePoise(amount);
-                
+
+                poiseDamageable.DamagePoise(new PoiseDamageData(amount, projectile.gameObject));
+
                 OnPoiseDamage?.Invoke();
 
                 return;

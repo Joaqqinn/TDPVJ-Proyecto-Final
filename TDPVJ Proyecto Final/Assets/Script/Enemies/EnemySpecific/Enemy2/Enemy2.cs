@@ -66,6 +66,14 @@ public class Enemy2 : Entity
         stats.Poise.OnCurrentValueZero -= HandlePoiseZero;
     }*/
 
+    protected override void HandleParry()
+    {
+        base.HandleParry();
+
+        Debug.Log("PARRY STUN STATE");
+        //stateMachine.ChangeState(stunState);
+    }
+
     private void Start()
     {
         stateMachine.Initialize(moveState);        
