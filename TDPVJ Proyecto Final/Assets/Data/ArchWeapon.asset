@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: ArchWeapon
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: f6323173f1f345a4d9483c621efc6133, type: 2}
   <NumberOfAttacks>k__BackingField: 1
   <ComponentData>k__BackingField:
@@ -31,10 +34,11 @@ MonoBehaviour:
       type: {class: ProjectileSpawnerData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: ProjectileSpawnerData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <SpawnInfos>k__BackingField:
-          - <Offset>k__BackingField: {x: 1.24, y: 0.5}
+          - <Offset>k__BackingField: {x: 1.24, y: 0.55}
             <Direction>k__BackingField: {x: 0, y: 0}
             <ProjectilePrefab>k__BackingField: {fileID: 8782578977186487393, guid: 0b52356383de4614a81029d5309925ef, type: 3}
             <DamageData>k__BackingField:
@@ -50,6 +54,7 @@ MonoBehaviour:
       type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: MovementData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <Direction>k__BackingField: {x: 0, y: 0}
@@ -58,6 +63,7 @@ MonoBehaviour:
       type: {class: OptionalSpriteData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: OptionalSpriteData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <UseOptionalSprite>k__BackingField: 1
@@ -66,6 +72,7 @@ MonoBehaviour:
       type: {class: DrawData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: DrawData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <DrawCurve>k__BackingField:

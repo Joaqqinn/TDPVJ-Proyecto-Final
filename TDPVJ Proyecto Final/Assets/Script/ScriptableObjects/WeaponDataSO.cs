@@ -9,6 +9,9 @@ namespace Bardent.Weapons
     [CreateAssetMenu(fileName = "newWeaponData", menuName = "Data/Weapon Data/Basic Weapon Data", order = 0)]
     public class WeaponDataSO : ScriptableObject
     {
+        [field: SerializeField] public Sprite Icon { get; set; }
+        [field: SerializeField] public string Name { get; private set; }
+        [field: SerializeField] public string Description { get; private set; }
         [field: SerializeField] public RuntimeAnimatorController AnimatorController { get; private set; }
         [field: SerializeField] public int NumberOfAttacks { get; private set; }
 
@@ -26,9 +29,9 @@ namespace Bardent.Weapons
 
         public void AddData(ComponentData data)
         {
-            if (ComponentData.FirstOrDefault(t => t.GetType() == data.GetType()) != null)
+            if(ComponentData.FirstOrDefault(t => t.GetType() == data.GetType()) != null) 
                 return;
-
+            
             ComponentData.Add(data);
         }
     }

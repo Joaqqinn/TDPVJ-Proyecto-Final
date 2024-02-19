@@ -6,11 +6,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    public event Action<bool> OnInteractInputChanged; 
+
     private PlayerInput playerInput;
     private Camera cam;
 
     public Vector2 RawMovementInput { get; private set; }
-    public Vector2 RawDashDirectionInput { get; private set; }
+    //public Vector2 RawDashDirectionInput { get; private set; }
     public Vector2Int DashDirectionInput { get; private set; }
     public int NormInputX { get; private set; }
     public int NormInputY { get; private set; }
@@ -42,6 +44,20 @@ public class PlayerInputHandler : MonoBehaviour
     {
         CheckJumpInputHoldTime();
         CheckDashInputHoldTime();
+    }
+
+    public void OnInteractInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            OnInteractInputChanged?.Invoke(true);
+            return;
+        }
+
+        if (context.canceled)
+        {
+            OnInteractInputChanged?.Invoke(false);
+        }
     }
 
     public void OnPrimaryAttackInput(InputAction.CallbackContext context)

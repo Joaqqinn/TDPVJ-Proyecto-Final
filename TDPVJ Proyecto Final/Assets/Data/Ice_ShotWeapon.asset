@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Ice_ShotWeapon
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 160d83ab12614264b8f0e180985b5b99, type: 2}
   <NumberOfAttacks>k__BackingField: 1
   <ComponentData>k__BackingField:
   - id: 0
   - id: 1
+  - id: 2
   references:
     version: 1
     00000000:
@@ -27,11 +31,12 @@ MonoBehaviour:
       type: {class: ProjectileSpawnerData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
         name: ProjectileSpawnerData
+        repeatData: 0
         attackData:
         - name: Attack 1
           <SpawnInfos>k__BackingField:
-          - <Offset>k__BackingField: {x: 1.24, y: 0.65}
-            <Direction>k__BackingField: {x: 0, y: 0}
+          - <Offset>k__BackingField: {x: 2, y: 0.65}
+            <Direction>k__BackingField: {x: 1, y: 0}
             <ProjectilePrefab>k__BackingField: {fileID: 4386162915216693248, guid: cadbee63677846240b1728a5ffabc611, type: 3}
             <DamageData>k__BackingField:
               <Amount>k__BackingField: 10
@@ -42,3 +47,12 @@ MonoBehaviour:
               <Amount>k__BackingField: 10
             <SpriteDataPackage>k__BackingField:
               <Sprite>k__BackingField: {fileID: -6557654283554391296, guid: fed09bd1ffa5be448bd0d69fb3756d3b, type: 3}
+    00000002:
+      type: {class: MovementData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: MovementData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 1

@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public PlayerLedgeClimbState LedgeClimbState { get; private set; }
     public PlayerDashState DashState { get; private set; }
     public PlayerCrouchIdleState CrouchIdleState { get; private set; }
+    public PlayerSlideState SlideState { get; private set; }
     public PlayerAttackState PrimaryAttackState { get; private set; }
     public PlayerAttackState SecondaryAttackState { get; private set; }
 
@@ -33,9 +34,13 @@ public class Player : MonoBehaviour
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public Rigidbody2D RB { get; private set; }
+    public Transform DashDirectionIndicator { get; private set; }
     public BoxCollider2D MovementCollider { get; private set; }
-    #endregion
+
     public Stats Stats { get; private set; }
+    
+    public InteractableDetector InteractableDetector { get; private set; }
+    #endregion
 
     #region Other Variables         
 
@@ -43,6 +48,7 @@ public class Player : MonoBehaviour
 
     private Weapon primaryWeapon;
     private Weapon secondaryWeapon;
+    
     #endregion
 
     #region Unity Callback Functions
@@ -52,12 +58,13 @@ public class Player : MonoBehaviour
 
         primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<Weapon>();
         secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<Weapon>();
-
+        
         primaryWeapon.SetCore(Core);
         secondaryWeapon.SetCore(Core);
 
         Stats = Core.GetCoreComponent<Stats>();
-
+        InteractableDetector = Core.GetCoreComponent<InteractableDetector>();
+        
         StateMachine = new PlayerStateMachine();
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
@@ -70,6 +77,7 @@ public class Player : MonoBehaviour
         LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "ledgeClimbState");
         DashState = new PlayerDashState(this, StateMachine, playerData, "inAir");
         CrouchIdleState = new PlayerCrouchIdleState(this, StateMachine, playerData, "crouch");
+        SlideState = new PlayerSlideState(this, StateMachine, playerData, "slide");
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon, CombatInputs.primary);
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon, CombatInputs.secondary);
     }
@@ -78,10 +86,12 @@ public class Player : MonoBehaviour
     {
         Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
-        RB = GetComponent<Rigidbody2D>();
-        //DashDirectionIndicator = transform.Find("DashDirectionIndicator");
-        MovementCollider = GetComponent<BoxCollider2D>();
 
+        InputHandler.OnInteractInputChanged += InteractableDetector.TryInteract;
+        
+        RB = GetComponent<Rigidbody2D>();
+        MovementCollider = GetComponent<BoxCollider2D>();
+        
         StateMachine.Initialize(IdleState);
     }
 
@@ -95,12 +105,13 @@ public class Player : MonoBehaviour
     {
         StateMachine.CurrentState.PhysicsUpdate();
     }
+
     #endregion
 
     #region Other Functions
+
     public void SetColliderHeight(float height)
     {
-        Debug.Log(MovementCollider);
         Vector2 center = MovementCollider.offset;
         workspace.Set(MovementCollider.size.x, height);
 
@@ -108,12 +119,12 @@ public class Player : MonoBehaviour
 
         MovementCollider.size = workspace;
         MovementCollider.offset = center;
-    }
+    }   
 
     private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
 
     private void AnimtionFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 
-
+   
     #endregion
 }

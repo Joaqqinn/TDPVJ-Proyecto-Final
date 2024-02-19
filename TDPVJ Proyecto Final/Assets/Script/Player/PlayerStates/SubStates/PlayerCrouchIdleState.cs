@@ -25,7 +25,7 @@ public class PlayerCrouchIdleState : PlayerGroundedState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
+        Movement?.CheckIfShouldFlip(player.InputHandler.NormInputX);
         if (!isExitingState)
         {
            if(yInput != -1 && !isTouchingCeiling)

@@ -25,7 +25,7 @@ public class PlayerGroundedState : PlayerState
     private CollisionSenses collisionSenses;
 
     private bool jumpInput;
-    //private bool grabInput;
+    private bool grabInput;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isTouchingLedge;
@@ -69,14 +69,14 @@ public class PlayerGroundedState : PlayerState
         xInput = player.InputHandler.NormInputX;
         yInput = player.InputHandler.NormInputY;
         jumpInput = player.InputHandler.JumpInput;
-        //grabInput = player.InputHandler.GrabInput;
+        grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
 
-        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling)
+        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling && player.PrimaryAttackState.CanTransitionToAttackState())
         {
             stateMachine.ChangeState(player.PrimaryAttackState);
         }
-        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary] && !isTouchingCeiling)
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary] && !isTouchingCeiling && player.SecondaryAttackState.CanTransitionToAttackState())
         {
             stateMachine.ChangeState(player.SecondaryAttackState);
         }
@@ -89,10 +89,6 @@ public class PlayerGroundedState : PlayerState
             player.InAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.InAirState);
         }
-        /*else if (isTouchingWall && grabInput && isTouchingLedge)
-        {
-            stateMachine.ChangeState(player.WallGrabState);
-        }*/
         else if (dashInput && player.DashState.CheckIfCanDash() && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.DashState);
