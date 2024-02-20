@@ -14,6 +14,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 RawMovementInput { get; private set; }
     //public Vector2 RawDashDirectionInput { get; private set; }
     public Vector2Int DashDirectionInput { get; private set; }
+    public Vector2Int SlideDirectionInput { get; private set; }
     public int NormInputX { get; private set; }
     public int NormInputY { get; private set; }
     public bool JumpInput { get; private set; }
@@ -21,7 +22,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool GrabInput { get; private set; }
     public bool DashInput { get; private set; }
     public bool DashInputStop { get; private set; }
-
+    public bool SlideInput { get; private set; }
+    public bool SlideInputStop { get; private set; }
     public bool[] AttackInputs { get; private set; }
 
     [SerializeField]
@@ -29,6 +31,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private float jumpInputStartTime;
     private float dashInputStartTime;
+    private float slideInputStartTime;
 
     private void Start()
     {
@@ -44,6 +47,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         CheckJumpInputHoldTime();
         CheckDashInputHoldTime();
+        CheckSlideInputHoldTime();
     }
 
     public void OnInteractInput(InputAction.CallbackContext context)
@@ -137,6 +141,20 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void OnSlideInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Debug.Log("SLIDE");
+            SlideInput = true;
+            SlideInputStop = false;
+            slideInputStartTime = Time.time;
+        }
+        else if (context.canceled)
+        {
+            SlideInputStop = true;
+        }
+    }
     /*public void OnDashDirectionInput(InputAction.CallbackContext context)
     {
         RawDashDirectionInput = context.ReadValue<Vector2>();
@@ -152,6 +170,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void UseJumpInput() => JumpInput = false;
 
     public void UseDashInput() => DashInput = false;
+    public void UseSlideInput() => SlideInput = false;
 
     /// <summary>
     /// Used to set the specific attack input back to false. Usually passed through the player attack state from an animation event.
@@ -171,6 +190,14 @@ public class PlayerInputHandler : MonoBehaviour
         if(Time.time >= dashInputStartTime + inputHoldTime)
         {
             DashInput = false;
+        }
+    }
+
+    private void CheckSlideInputHoldTime()
+    {
+        if (Time.time >= slideInputStartTime + inputHoldTime)
+        {
+            SlideInput = false;
         }
     }
 }

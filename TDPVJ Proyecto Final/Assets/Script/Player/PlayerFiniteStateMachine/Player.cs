@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
 
     private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
 
-    private void AnimtionFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
+    private void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 
    
     #endregion

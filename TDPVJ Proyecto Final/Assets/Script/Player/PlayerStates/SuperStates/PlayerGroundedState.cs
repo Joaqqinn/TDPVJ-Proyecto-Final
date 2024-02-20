@@ -30,6 +30,7 @@ public class PlayerGroundedState : PlayerState
     private bool isTouchingWall;
     private bool isTouchingLedge;
     private bool dashInput;
+    private bool slideInput;
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData,
         string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -71,6 +72,7 @@ public class PlayerGroundedState : PlayerState
         jumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
+        slideInput = player.InputHandler.SlideInput;
 
         if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling && player.PrimaryAttackState.CanTransitionToAttackState())
         {
@@ -92,6 +94,10 @@ public class PlayerGroundedState : PlayerState
         else if (dashInput && player.DashState.CheckIfCanDash() && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.DashState);
+        }
+        else if (slideInput)
+        {
+            stateMachine.ChangeState(player.SlideState);
         }
     }
 

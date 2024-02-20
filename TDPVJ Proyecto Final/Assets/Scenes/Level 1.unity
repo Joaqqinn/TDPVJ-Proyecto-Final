@@ -628,6 +628,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a0022466-8bdd-45f7-87d2-dc248026c7c0
     m_ActionName: Gameplay/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 437159428}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnSlideInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6bd72ea4-e7f0-4d18-96ca-3e4327cae8ed
+    m_ActionName: Gameplay/Slide[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1470,7 +1486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <weaponData>k__BackingField:
   - {fileID: 11400000, guid: 8374777c1a0475949b00e75c0ac3fc35, type: 2}
-  - {fileID: 11400000, guid: 2ac37161742ff2b489c411d4a0b5f2ca, type: 2}
+  - {fileID: 11400000, guid: 3a6a4393840ceb04f89578f2a7d6bfc9, type: 2}
 --- !u!1001 &1030390116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1859,7 +1875,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0079274, y: 1}
+    m_SensorSize: {x: 1.9446064, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

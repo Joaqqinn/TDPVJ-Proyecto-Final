@@ -24,17 +24,16 @@ public class PlayerDashState : PlayerAbilityState {
 		isHolding = true;
 		dashDirection = Vector2.right * Movement.FacingDirection;
 
-		Time.timeScale = playerData.holdTimeScale;
+		Time.timeScale = playerData.dashHoldTimeScale;
 		startTime = Time.unscaledTime;
 
 	}
 
 	public override void Exit() {
 		base.Exit();
-
 		if (Movement?.CurrentVelocity.y > 0) {
 			Movement?.SetVelocityY(Movement.CurrentVelocity.y * playerData.dashEndYMultiplier);
-		}
+        }
 	}
 
 	public override void LogicUpdate() {
@@ -57,17 +56,17 @@ public class PlayerDashState : PlayerAbilityState {
 
 				float angle = Vector2.SignedAngle(Vector2.right, dashDirection);
 
-				if (dashInputStop || Time.unscaledTime >= startTime + playerData.maxHoldTime) {
+				if (dashInputStop || Time.unscaledTime >= startTime + playerData.dashMaxHoldTime) {
 					isHolding = false;
 					Time.timeScale = 1f;
 					startTime = Time.time;
 					Movement?.CheckIfShouldFlip(Mathf.RoundToInt(dashDirection.x));
-					player.RB.drag = playerData.drag;
+					player.RB.drag = playerData.dashDrag;
 					Movement?.SetVelocity(playerData.dashVelocity, dashDirection);
 					PlaceAfterImage();
 				}
 			} else {
-				Movement?.SetVelocity(playerData.dashVelocity, dashDirection);
+                Movement?.SetVelocity(playerData.dashVelocity, dashDirection);
 				CheckIfShouldPlaceAfterImage();
 
 				if (Time.time >= startTime + playerData.dashTime) {
