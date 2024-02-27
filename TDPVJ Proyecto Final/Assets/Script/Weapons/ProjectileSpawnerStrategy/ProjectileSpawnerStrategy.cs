@@ -42,7 +42,7 @@ namespace Bardent.Weapons
             int facingDirection,
             ObjectPools objectPools, Action<Projectile> OnSpawnProjectile)
         {
-            SetSpawnPosition(spawnerPos, projectileSpawnInfo.Offset, facingDirection);
+            SetSpawnPosition(spawnerPos, projectileSpawnInfo.OffsetData.Offset, facingDirection);
             SetSpawnDirection(spawnDirection, facingDirection);
             GetProjectileAndSetPositionAndRotation(objectPools, projectileSpawnInfo.ProjectilePrefab);
             InitializeProjectile(projectileSpawnInfo, OnSpawnProjectile);
@@ -67,6 +67,7 @@ namespace Bardent.Weapons
             currentProjectile.Reset();
 
             // Send through new data packages
+            currentProjectile.SendDataPackage(projectileSpawnInfo.OffsetData);
             currentProjectile.SendDataPackage(projectileSpawnInfo.DamageData);
             currentProjectile.SendDataPackage(projectileSpawnInfo.KnockBackData);
             currentProjectile.SendDataPackage(projectileSpawnInfo.PoiseDamageData);

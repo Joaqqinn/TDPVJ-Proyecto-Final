@@ -54,7 +54,6 @@ namespace Bardent.ObjectPoolSystem
             // Reference the object that the pool is actually interested in so we can return it
             component = GetComponent(comp.GetType());
         }
-
         public void Release()
         {
             objectPool = null;

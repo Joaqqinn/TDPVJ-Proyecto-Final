@@ -23,12 +23,13 @@ namespace Bardent.ProjectileSystem.Components
         protected override void HandleReceiveDataPackage(ProjectileDataPackage dataPackage)
         {
             base.HandleReceiveDataPackage(dataPackage);
-
+            
             if (!(dataPackage is SpriteDataPackage spriteDataPackage))
                 return;
 
             sprite = spriteDataPackage.Sprite;
         }
+
 
         #region Plumbing
 

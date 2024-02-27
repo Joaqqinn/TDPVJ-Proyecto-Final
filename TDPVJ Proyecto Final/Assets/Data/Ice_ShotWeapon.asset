@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Ice_ShotWeapon
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: -8845434035057206659, guid: 7698f902a8e73cb4b88c4738f7fb0ff5, type: 3}
   <Name>k__BackingField: 
   <Description>k__BackingField: 
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 160d83ab12614264b8f0e180985b5b99, type: 2}
@@ -35,9 +35,10 @@ MonoBehaviour:
         attackData:
         - name: Attack 1
           <SpawnInfos>k__BackingField:
-          - <Offset>k__BackingField: {x: 2, y: 0.65}
-            <Direction>k__BackingField: {x: 1, y: 0}
+          - <Direction>k__BackingField: {x: 1, y: 0}
             <ProjectilePrefab>k__BackingField: {fileID: 4386162915216693248, guid: cadbee63677846240b1728a5ffabc611, type: 3}
+            <OffsetData>k__BackingField:
+              <Offset>k__BackingField: {x: 1.24, y: 0.65}
             <DamageData>k__BackingField:
               <Amount>k__BackingField: 10
             <KnockBackData>k__BackingField:

@@ -93,6 +93,9 @@ namespace Bardent.ProjectileSystem.Components
 
             // Set reference transform and cache position and rotation offset
             referenceTransform = newReferenceTransform;
+            //MODIFICA LA POSICION DONDE SE DIBUJA EL ARMA CUANDO IMPACTA CON LA PARED. PENSAR COMO MODIFICAR EN X E Y
+            //referenceTransform.position = new Vector3(0.4f, 0, 0);
+            //Debug.Log(referenceTransform.position);
             offsetPosition = _transform.position - referenceTransform.position;
             offsetRotation = Quaternion.Inverse(referenceTransform.rotation) * _transform.rotation;
         }

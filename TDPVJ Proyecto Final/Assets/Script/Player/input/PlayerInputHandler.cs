@@ -25,6 +25,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool SlideInput { get; private set; }
     public bool SlideInputStop { get; private set; }
     public bool[] AttackInputs { get; private set; }
+    public bool ThrowInput { get; private set; }
 
     [SerializeField]
     private float inputHoldTime = 0.2f;
@@ -114,19 +115,6 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    /*public void OnGrabInput(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            GrabInput = true;
-        }
-
-        if (context.canceled)
-        {
-            GrabInput = false;
-        }
-    }*/
-
     public void OnDashInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -145,7 +133,6 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("SLIDE");
             SlideInput = true;
             SlideInputStop = false;
             slideInputStartTime = Time.time;
@@ -155,17 +142,19 @@ public class PlayerInputHandler : MonoBehaviour
             SlideInputStop = true;
         }
     }
-    /*public void OnDashDirectionInput(InputAction.CallbackContext context)
+    public void OnThrowInput(InputAction.CallbackContext context)
     {
-        RawDashDirectionInput = context.ReadValue<Vector2>();
-
-        if(playerInput.currentControlScheme == "Keyboard")
+        if (context.started)
         {
-            RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
+            ThrowInput = true;
+            Debug.Log("PRESIONADO ALT");
         }
+        else if (context.canceled)
+        {
+            ThrowInput = false;
+        }
+    }
 
-        DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
-    }*/
 
     public void UseJumpInput() => JumpInput = false;
 

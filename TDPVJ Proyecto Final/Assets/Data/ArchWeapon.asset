@@ -38,9 +38,10 @@ MonoBehaviour:
         attackData:
         - name: Attack 1
           <SpawnInfos>k__BackingField:
-          - <Offset>k__BackingField: {x: 1.24, y: 0.55}
-            <Direction>k__BackingField: {x: 0, y: 0}
+          - <Direction>k__BackingField: {x: 0, y: 0}
             <ProjectilePrefab>k__BackingField: {fileID: 8782578977186487393, guid: 0b52356383de4614a81029d5309925ef, type: 3}
+            <OffsetData>k__BackingField:
+              <Offset>k__BackingField: {x: 1.24, y: 0.5}
             <DamageData>k__BackingField:
               <Amount>k__BackingField: 15
             <KnockBackData>k__BackingField:

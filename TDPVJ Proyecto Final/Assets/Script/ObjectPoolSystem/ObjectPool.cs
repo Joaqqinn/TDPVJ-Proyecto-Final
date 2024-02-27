@@ -104,7 +104,6 @@ namespace Bardent.ObjectPoolSystem
         {
             if (!(comp is T compObj))
                 return;
-            
             compObj.gameObject.SetActive(false);
             pool.Enqueue(compObj);
         }

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Bardent.CoreSystem;
+using Bardent.Weapons;
 using UnityEngine;
+using System;
 
 public class PlayerGroundedState : PlayerState
 {
@@ -24,6 +26,16 @@ public class PlayerGroundedState : PlayerState
 
     private CollisionSenses collisionSenses;
 
+    protected WeaponInventory WeaponInventory
+    {
+        get => weaponInventory ?? core.GetCoreComponent(ref weaponInventory);
+    }
+
+    private WeaponInventory weaponInventory;
+
+    private Weapon weapon;
+    private WeaponDataSO axeWeaponDataSO;
+
     private bool jumpInput;
     private bool grabInput;
     private bool isGrounded;
@@ -31,6 +43,8 @@ public class PlayerGroundedState : PlayerState
     private bool isTouchingLedge;
     private bool dashInput;
     private bool slideInput;
+    private bool throwInput;
+    private int numberOfAttack;
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData,
         string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -54,8 +68,17 @@ public class PlayerGroundedState : PlayerState
     {
         base.Enter();
 
+        weapon = player.GetComponentInChildren<Weapon>();
         player.JumpState.ResetAmountOfJumpsLeft();
         player.DashState.ResetCanDash();
+
+        foreach (var item in WeaponInventory.weaponData)
+        {
+            if(item.name == "AxeWeapon")
+            {
+                axeWeaponDataSO = item;
+            }
+        }
     }
 
     public override void Exit()
@@ -73,9 +96,17 @@ public class PlayerGroundedState : PlayerState
         grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
         slideInput = player.InputHandler.SlideInput;
-
-        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling && player.PrimaryAttackState.CanTransitionToAttackState())
+        throwInput = player.InputHandler.ThrowInput;
+        //numberOfAttack = weapon.CurrentAttackCounter;
+        if (throwInput && player.InputHandler.AttackInputs[(int)CombatInputs.primary])
         {
+            Debug.Log("PRESIONADO");
+            weapon.SetCurrentAttackCounter();
+            stateMachine.ChangeState(player.PrimaryAttackState);
+            //Debug.Log();
+        }
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling && player.PrimaryAttackState.CanTransitionToAttackState())
+        { 
             stateMachine.ChangeState(player.PrimaryAttackState);
         }
         else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary] && !isTouchingCeiling && player.SecondaryAttackState.CanTransitionToAttackState())

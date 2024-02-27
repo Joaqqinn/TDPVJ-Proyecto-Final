@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: AxeWeapon
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 135827859031697830, guid: 7698f902a8e73cb4b88c4738f7fb0ff5, type: 3}
+  <Name>k__BackingField: Axe
+  <Description>k__BackingField: El hacha
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 60d746d0024b31b48934df5a66dbc67a, type: 2}
   <NumberOfAttacks>k__BackingField: 3
   <ComponentData>k__BackingField:
@@ -20,6 +23,9 @@ MonoBehaviour:
   - id: 2
   - id: 3
   - id: 4
+  - id: 5
+  - id: 6
+  - id: 7
   references:
     version: 1
     00000000:
@@ -37,6 +43,9 @@ MonoBehaviour:
         - name: Attack 3
           <Direction>k__BackingField: {x: 1, y: 5}
           <Velocity>k__BackingField: 5
+        - name: Attack 4
+          <Direction>k__BackingField: {x: 0, y: 0}
+          <Velocity>k__BackingField: 0
     00000001:
       type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -51,7 +60,7 @@ MonoBehaviour:
             y: -1.27
             width: 1.73
             height: 2.77
-        - name: Attack 1
+        - name: Attack 2
           Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
@@ -59,7 +68,7 @@ MonoBehaviour:
             y: -1.27
             width: 1.73
             height: 2.77
-        - name: Attack 1
+        - name: Attack 3
           Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
@@ -67,6 +76,14 @@ MonoBehaviour:
             y: -1.04
             width: 1.73
             height: 2.96
+        - name: Attack 4
+          Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
         <DetectableLayers>k__BackingField:
           serializedVersion: 2
           m_Bits: 512
@@ -82,6 +99,8 @@ MonoBehaviour:
           <Amount>k__BackingField: 10
         - name: Attack 3
           <Amount>k__BackingField: 15
+        - name: Attack 4
+          <Amount>k__BackingField: 0
     00000003:
       type: {class: KnockBackData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -97,6 +116,9 @@ MonoBehaviour:
         - name: Attack 3
           <Angle>k__BackingField: {x: 1, y: 3}
           <Strength>k__BackingField: 20
+        - name: Attack 4
+          <Angle>k__BackingField: {x: 0, y: 0}
+          <Strength>k__BackingField: 0
     00000004:
       type: {class: PoiseDamageData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -109,3 +131,71 @@ MonoBehaviour:
           <Amount>k__BackingField: 0
         - name: Attack 3
           <Amount>k__BackingField: 0
+        - name: Attack 4
+          <Amount>k__BackingField: 0
+    00000005:
+      type: {class: ProjectileSpawnerData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: ProjectileSpawnerData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <SpawnInfos>k__BackingField: []
+        - name: Attack 2
+          <SpawnInfos>k__BackingField: []
+        - name: Attack 3
+          <SpawnInfos>k__BackingField: []
+        - name: Attack 4
+          <SpawnInfos>k__BackingField:
+          - <Direction>k__BackingField: {x: 0, y: 0}
+            <ProjectilePrefab>k__BackingField: {fileID: 4809027677894838873, guid: a692ebfe2e2c6be4e995d6f38e66d837, type: 3}
+            <OffsetData>k__BackingField:
+              <Offset>k__BackingField: {x: 1.54, y: 1.3}
+            <DamageData>k__BackingField:
+              <Amount>k__BackingField: 15
+            <KnockBackData>k__BackingField:
+              Strength: 10
+              Angle: {x: 1, y: 1}
+            <PoiseDamageData>k__BackingField:
+              <Amount>k__BackingField: 5
+            <SpriteDataPackage>k__BackingField:
+              <Sprite>k__BackingField: {fileID: 21300000, guid: cd549e02b10b5ab4c8dbdee6a98f6da4, type: 3}
+          - <Direction>k__BackingField: {x: 0, y: 0}
+            <ProjectilePrefab>k__BackingField: {fileID: -1321454364529588894, guid: 301796093e6550f4180563d59efa9fde, type: 3}
+            <OffsetData>k__BackingField:
+              <Offset>k__BackingField: {x: 1.54, y: 1.3}
+            <DamageData>k__BackingField:
+              <Amount>k__BackingField: 15
+            <KnockBackData>k__BackingField:
+              Strength: 10
+              Angle: {x: 1, y: 1}
+            <PoiseDamageData>k__BackingField:
+              <Amount>k__BackingField: 5
+            <SpriteDataPackage>k__BackingField:
+              <Sprite>k__BackingField: {fileID: 0}
+    00000006:
+      type: {class: LineTrayectoryData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: LineTrayectoryData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Point>k__BackingField: {fileID: 0}
+          <NumberOfPoints>k__BackingField: 0
+          <SpaceBetwennPoints>k__BackingField: 0
+        - name: Attack 2
+          <Point>k__BackingField: {fileID: 0}
+          <NumberOfPoints>k__BackingField: 0
+          <SpaceBetwennPoints>k__BackingField: 0
+        - name: Attack 3
+          <Point>k__BackingField: {fileID: 0}
+          <NumberOfPoints>k__BackingField: 0
+          <SpaceBetwennPoints>k__BackingField: 0
+        - name: Attack 4
+          <Point>k__BackingField: {fileID: 3635414795913544603, guid: 301796093e6550f4180563d59efa9fde, type: 3}
+          <NumberOfPoints>k__BackingField: 10
+          <SpaceBetwennPoints>k__BackingField: 0.08
+    00000007:
+      type: {class: InputHoldData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
+      data:
+        name: InputHoldData

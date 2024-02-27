@@ -101,6 +101,7 @@ namespace Bardent.Weapons
 
         public void SetCanEnterAttack(bool value) => CanEnterAttack = value;
 
+        public void SetCurrentAttackCounter() { currentAttackCounter = 3; }
         public void Exit()
         {
             Anim.SetBool("active", false);

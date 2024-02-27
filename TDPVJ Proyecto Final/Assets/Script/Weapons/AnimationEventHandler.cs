@@ -10,6 +10,7 @@ namespace Bardent.Weapons
         public event Action OnStopMovement;
         public event Action OnAttackAction;
         public event Action OnMinHoldPassed;
+        public event Action OnSpawnTrayectory;  //Spawn de los puntos de trayectoria para el lanzamiento
 
         /*
          * This trigger is used to indicate in the weapon animation when the input should be "used" meaning the player has to release the input key and press it down again to trigger the next attack.
@@ -52,5 +53,7 @@ namespace Bardent.Weapons
         private void StopAnimationWindow(AnimationWindows window) => OnStopAnimationWindow?.Invoke(window);
 
         private void EnableInterrupt() => OnEnableInterrupt?.Invoke();
+
+        private void SpawnTrayectory() => OnSpawnTrayectory?.Invoke();
     }
 }
