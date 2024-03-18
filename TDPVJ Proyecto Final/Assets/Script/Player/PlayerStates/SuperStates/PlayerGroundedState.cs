@@ -34,7 +34,6 @@ public class PlayerGroundedState : PlayerState
     private WeaponInventory weaponInventory;
 
     private Weapon weapon;
-    private WeaponDataSO axeWeaponDataSO;
 
     private bool jumpInput;
     private bool grabInput;
@@ -42,9 +41,7 @@ public class PlayerGroundedState : PlayerState
     private bool isTouchingWall;
     private bool isTouchingLedge;
     private bool dashInput;
-    private bool slideInput;
-    private bool throwInput;
-    private int numberOfAttack;
+    private bool SpecialAttackInput;
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData,
         string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -71,14 +68,6 @@ public class PlayerGroundedState : PlayerState
         weapon = player.GetComponentInChildren<Weapon>();
         player.JumpState.ResetAmountOfJumpsLeft();
         player.DashState.ResetCanDash();
-
-        foreach (var item in WeaponInventory.weaponData)
-        {
-            if(item.name == "AxeWeapon")
-            {
-                axeWeaponDataSO = item;
-            }
-        }
     }
 
     public override void Exit()
@@ -95,23 +84,25 @@ public class PlayerGroundedState : PlayerState
         jumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
-        slideInput = player.InputHandler.SlideInput;
-        throwInput = player.InputHandler.ThrowInput;
-        //numberOfAttack = weapon.CurrentAttackCounter;
-        if (throwInput && player.InputHandler.AttackInputs[(int)CombatInputs.primary])
+        SpecialAttackInput = player.InputHandler.ThrowInput;
+
+        if (SpecialAttackInput && player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !weapon.ProjectileInMovement)
         {
             Debug.Log("PRESIONADO");
-            weapon.SetCurrentAttackCounter();
+            weapon.SetCurrentAttackCounter(3);
             stateMachine.ChangeState(player.PrimaryAttackState);
-            //Debug.Log();
         }
-        else if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling && player.PrimaryAttackState.CanTransitionToAttackState())
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling && player.PrimaryAttackState.CanTransitionToAttackState() && !weapon.ProjectileInMovement)
         { 
             stateMachine.ChangeState(player.PrimaryAttackState);
         }
         else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary] && !isTouchingCeiling && player.SecondaryAttackState.CanTransitionToAttackState())
         {
             stateMachine.ChangeState(player.SecondaryAttackState);
+        }
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.tertiary] && (yInput == -1))
+        {
+            stateMachine.ChangeState(player.TertiaryAttackState);
         }
         else if (jumpInput && player.JumpState.CanJump() && !isTouchingCeiling)
         {
@@ -126,7 +117,7 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(player.DashState);
         }
-        else if (slideInput)
+        else if ((yInput == -1) && dashInput)
         {
             stateMachine.ChangeState(player.SlideState);
         }

@@ -289,10 +289,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1290
         y: 334
-        width: 29
+        width: 37
         height: 51
       alignment: 9
-      pivot: {x: 0.355, y: 0.45}
+      pivot: {x: 0.28, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,10 +310,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1471
         y: 334
-        width: 29
+        width: 39
         height: 50
       alignment: 9
-      pivot: {x: 0.355, y: 0.46}
+      pivot: {x: 0.27, y: 0.46}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

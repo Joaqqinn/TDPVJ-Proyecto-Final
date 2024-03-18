@@ -24,9 +24,10 @@ namespace Bardent.Weapons.Components
         //LinePredictsTrayectory referencia al script
         private LinePredictsTrayectory linePredictsTrayectory;
 
-        //Guardamos el offset que se utiliza en el punto de spawn para usarlo en la en el script LinePredictsTrayectory
+        //Guardamos el offset que se utiliza en el punto de spawn para usarlo en el script LinePredictsTrayectory
         public Vector2 offset;
 
+        
         public void SetProjectileSpawnerStrategy(IProjectileSpawnerStrategy newStrategy)
         {
             projectileSpawnerStrategy = newStrategy;
@@ -41,6 +42,7 @@ namespace Bardent.Weapons.Components
                 //Proteccion para el attack 4 y que solo se instancie el prefab del Axe
                 if (projectileSpawnInfo.ProjectilePrefab.name != "CircleTrayectory")
                 {
+                    weapon.SetProjectileInMovement(true);
                     // Spawn projectile based on the current strategy
                     projectileSpawnerStrategy.ExecuteSpawnStrategy(projectileSpawnInfo, transform.position,
                     movement.FacingDirection, objectPools, OnSpawnProjectile);
@@ -56,10 +58,7 @@ namespace Bardent.Weapons.Components
                 //Proteccion para el attack 4 y que solo se instancie el prefab del Point
                 if(projectileSpawnInfo.ProjectilePrefab.name == "CircleTrayectory")
                 {
-                    // Spawn projectile based on the current strategy
-                    projectileSpawnerStrategy.ExecuteSpawnStrategy(projectileSpawnInfo, transform.position,
-                        movement.FacingDirection, objectPools, OnSpawnProjectile);
-                    //Instanciamos 10 CircleTrayectory con la stategy de objectpool
+                    //Instanciamos 10 CircleTrayectory 
                     for (int i = 0; i < 10; i++)
                     {
                         //Instanciamos los puntos de trayectoraria y los pasamos a su script

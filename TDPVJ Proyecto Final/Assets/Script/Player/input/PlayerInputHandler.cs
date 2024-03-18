@@ -90,7 +90,18 @@ public class PlayerInputHandler : MonoBehaviour
             AttackInputs[(int)CombatInputs.secondary] = false;
         }
     }
+    public void OntTertiaryAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            AttackInputs[(int)CombatInputs.tertiary] = true;
+        }
 
+        if (context.canceled)
+        {
+            AttackInputs[(int)CombatInputs.tertiary] = false;
+        }
+    }
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         RawMovementInput = context.ReadValue<Vector2>();
@@ -122,23 +133,13 @@ public class PlayerInputHandler : MonoBehaviour
             DashInput = true;
             DashInputStop = false;
             dashInputStartTime = Time.time;
-        }
-        else if (context.canceled)
-        {
-            DashInputStop = true;
-        }
-    }
 
-    public void OnSlideInput(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            SlideInput = true;
             SlideInputStop = false;
             slideInputStartTime = Time.time;
         }
         else if (context.canceled)
         {
+            DashInputStop = true;
             SlideInputStop = true;
         }
     }
@@ -194,5 +195,6 @@ public class PlayerInputHandler : MonoBehaviour
 public enum CombatInputs
 {
     primary,
-    secondary
+    secondary,
+    tertiary
 }

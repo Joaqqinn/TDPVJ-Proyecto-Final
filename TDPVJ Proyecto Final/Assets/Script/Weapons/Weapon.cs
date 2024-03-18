@@ -39,6 +39,7 @@ namespace Bardent.Weapons
         }
 
         public float AttackStartTime { get; private set; }
+        public bool ProjectileInMovement { get; private set; }
 
         public Animator Anim { get; private set; }
         public GameObject BaseGameObject { get; private set; }
@@ -68,7 +69,6 @@ namespace Bardent.Weapons
 
         private bool initDone;
         private AnimationEventHandler eventHandler;
-
         public void Enter()
         {
             // Debug.Break();
@@ -101,7 +101,9 @@ namespace Bardent.Weapons
 
         public void SetCanEnterAttack(bool value) => CanEnterAttack = value;
 
-        public void SetCurrentAttackCounter() { currentAttackCounter = 3; }
+        public void SetCurrentAttackCounter(int counter) { currentAttackCounter = counter; }
+
+        public void SetProjectileInMovement(bool condition) { ProjectileInMovement = condition; }
         public void Exit()
         {
             Anim.SetBool("active", false);

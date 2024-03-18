@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 2708217854175918860}
   - component: {fileID: 478453912712289543}
   - component: {fileID: 9056454678105122793}
+  - component: {fileID: -7182369899900945227}
+  - component: {fileID: 4760788166273428692}
+  - component: {fileID: 3748193742464159215}
   m_Layer: 0
   m_Name: Axe Projectile
   m_TagString: Untagged
@@ -58,7 +61,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -89,8 +92,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ApplyContinuously>k__BackingField: 0
-  <Speed>k__BackingField: 20
+  <Speed>k__BackingField: 18
   <ThrowTheMouse>k__BackingField: 1
+  <ReturnToPlayer>k__BackingField: 1
+  <ReturnToPlayerCounter>k__BackingField: 5
+  <ReturnTheWeaponNotVisible>k__BackingField: 1
 --- !u!114 &7406007288744578888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,16 +123,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnRaycastHit2D:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3748193742464159215}
+        m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileParticles,
+          Assembly-CSharp
+        m_MethodName: SpawnImpactParticles
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <HitBoxRect>k__BackingField:
     serializedVersion: 2
-    x: -0.51
-    y: -0.45
-    width: 1.13
-    height: 0.88
+    x: -0.63
+    y: -0.48
+    width: 1.23
+    height: 0.93
   <LayerMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 2816
 --- !u!114 &8084458040233913280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,19 +174,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6124560311202942736}
-        m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
-          Assembly-CSharp
-        m_MethodName: SetActiveNextFrame
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2708217854175918860}
         m_TargetAssemblyTypeName: Bardent.ProjectileSystem.Components.ProjectileComponent,
           Assembly-CSharp
@@ -178,18 +184,6 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1525961965112969308}
-        m_TargetAssemblyTypeName: Bardent.ObjectPoolSystem.ObjectPoolItem, Assembly-CSharp
-        m_MethodName: ReturnItem
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 5
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -214,6 +208,7 @@ MonoBehaviour:
     m_Bits: 256
   <InactiveSortingLayerName>k__BackingField: InactiveProjectile
   <CheckDistance>k__BackingField: 2
+  returnToPlayer: 0
 --- !u!114 &498407503843604263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,19 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnDamage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1525961965112969308}
-        m_TargetAssemblyTypeName: Bardent.ObjectPoolSystem.ObjectPoolItem, Assembly-CSharp
-        m_MethodName: ReturnItem
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnRaycastHit:
     m_PersistentCalls:
       m_Calls: []
@@ -278,7 +261,7 @@ MonoBehaviour:
       m_Calls: []
   <LayerMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
 --- !u!114 &2708217854175918860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +304,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413973b844e8496fa79e4f757864d387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7182369899900945227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478404148275043611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2d1e85b640d4247ba152a80cde7242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnRaycastHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1525961965112969308}
+        m_TargetAssemblyTypeName: Bardent.ObjectPoolSystem.ObjectPoolItem, Assembly-CSharp
+        m_MethodName: ReturnItem
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <layerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!114 &4760788166273428692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478404148275043611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cccbbe34820bd846a28d2a64d362695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setStuck:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1525961965112969308}
+        m_TargetAssemblyTypeName: Bardent.ObjectPoolSystem.ObjectPoolItem, Assembly-CSharp
+        m_MethodName: ReturnItem
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <TimeSpawnToDeactivate>k__BackingField: 2
+--- !u!114 &3748193742464159215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478404148275043611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42329395e1204eb4482a72a897d00088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactParticles: {fileID: 3331873728183600636, guid: 0fa4e06849a1ab540abfadad2140c5eb, type: 3}
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!1 &8403730746887689120
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7965785849456874513}
   - component: {fileID: 9008814494215743710}
+  - component: {fileID: 8227943307624678045}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -347,7 +405,7 @@ Transform:
   m_GameObject: {fileID: 8403730746887689120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7747392865756047933}
   m_RootOrder: 0
@@ -403,3 +461,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8227943307624678045
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403730746887689120}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd69ace02dd892f4d868485d46477432, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

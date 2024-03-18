@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Bardent.Utilities;
+using Newtonsoft.Json.Bson;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -26,16 +27,27 @@ namespace Bardent.ProjectileSystem.Components
         [field: SerializeField] public string InactiveSortingLayerName { get; private set; }
         [field: SerializeField] public float CheckDistance { get; private set; }
 
-        private bool isStuck;
+        [NonSerialized] public bool isStuck;
         private bool subscribedToDisableNotifier;
+        public bool returnToPlayer;
 
         private HitBox hitBox;
 
-        private string activeSortingLayerName;
+        private Movement movement;
+
+        private OutOfCamera outOfCamera;
+
+        private ProjectileParticles projectileParticles;
 
         private SpriteRenderer sr;
 
+        private Animator anim;
+
+        private string activeSortingLayerName;
+
         private OnDisableNotifier onDisableNotifier;
+
+        private TimeNotifier timeNotifier;
 
         private Transform referenceTransform;
         private Transform _transform;
@@ -47,10 +59,10 @@ namespace Bardent.ProjectileSystem.Components
 
         private void HandleRaycastHit2D(RaycastHit2D[] hits)
         {
-            if (isStuck)
+            if (isStuck || returnToPlayer)
                 return;
-
-            SetStuck();
+            //Debug.Log("RETURN TO PLAYER FALSE");
+            //SetStuck();
 
             // The point returned by the boxcast can be weird, so we do one last check by firing a ray from the origin to the right to find
             // a more suitable resting point
@@ -71,6 +83,7 @@ namespace Bardent.ProjectileSystem.Components
                 if (!LayerMaskUtilities.IsLayerInMask(hit, LayerMask))
                     continue;
 
+                SetStuck();
                 SetReferenceTransformAndPoint(hit.transform, hit.point);
                 return;
             }
@@ -103,19 +116,32 @@ namespace Bardent.ProjectileSystem.Components
         // Set Rigidbody2D bodyType to static so that it is not affected by gravity and set sorting layer such that projectile appears behind other items
         private void SetStuck()
         {
+            //Debug.Log("SetStuck");
             isStuck = true;
-
+            
             sr.sortingLayerName = InactiveSortingLayerName;
             rb.velocity = Vector2.zero;
             rb.bodyType = RigidbodyType2D.Static;
 
+            outOfCamera.returnToPlayer = false;
+            projectileParticles.runOneTime = true;
+
             setStuck?.Invoke();
+            if (movement.ReturnToPlayer) 
+            {
+                anim.SetBool("action", false);
+                timeNotifier.Init(movement.ReturnToPlayerCounter);
+            }
         }
 
         // Set Rigidbody2D bodyType to dynamic so that it is affected by gravity again and set sorting layer such that projectile appears in front of other items
-        private void SetUnstuck()
+        public void SetUnstuck()
         {
+            //Debug.Log("SetUnstuck");
+            if (movement.ReturnToPlayer) { anim.SetBool("action", true); }
             isStuck = false;
+
+            projectileParticles.runOneTime = false;
 
             sr.sortingLayerName = activeSortingLayerName;
             rb.bodyType = RigidbodyType2D.Dynamic;
@@ -142,7 +168,11 @@ namespace Bardent.ProjectileSystem.Components
 
             SetUnstuck();
         }
-
+         private void InitReturnToPlayer()
+        {
+            Debug.Log("INIT RETURN");
+            returnToPlayer = true;
+        }
 
         #region Plumbing
 
@@ -154,17 +184,32 @@ namespace Bardent.ProjectileSystem.Components
 
             _transform = transform;
 
+            returnToPlayer = false;
+
             sr = GetComponentInChildren<SpriteRenderer>();
             activeSortingLayerName = sr.sortingLayerName;
 
             hitBox = GetComponent<HitBox>();
 
             hitBox.OnRaycastHit2D.AddListener(HandleRaycastHit2D);
+
+            movement = GetComponent<Movement>();
+
+            outOfCamera = GetComponent<OutOfCamera>();
+
+            anim = GetComponentInChildren<Animator>();
+
+            projectileParticles = GetComponent<ProjectileParticles>();
+
+            timeNotifier = new TimeNotifier();
+            timeNotifier.Disable();
         }
 
         protected override void Update()
         {
             base.Update();
+
+            if (movement.ReturnToPlayer) { timeNotifier.Tick(); }
 
             if (!isStuck)
                 return;
@@ -172,13 +217,18 @@ namespace Bardent.ProjectileSystem.Components
             // Update position and rotation based on reference transform
             if (!referenceTransform)
             {
+                //Debug.Log("UPDATE STICK");
                 SetUnstuck();
                 return;
             }
 
-            var referenceRotation = referenceTransform.rotation;
-            _transform.position = referenceTransform.position + referenceRotation * offsetPosition;
-            _transform.rotation = referenceRotation * offsetRotation;
+            if(!returnToPlayer)
+            {
+                var referenceRotation = referenceTransform.rotation;
+                _transform.position = referenceTransform.position + referenceRotation * offsetPosition;
+                _transform.rotation = referenceRotation * offsetRotation;
+            }
+
         }
 
         protected override void OnDestroy()
@@ -193,6 +243,15 @@ namespace Bardent.ProjectileSystem.Components
             }
         }
 
+        private void OnEnable()
+        {
+            timeNotifier.OnNotify += InitReturnToPlayer;
+        }
+
+        private void OnDisable()
+        {
+            timeNotifier.OnNotify -= InitReturnToPlayer;
+        }
         #endregion
     }
 }

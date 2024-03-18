@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -1321454364529588894}
   - component: {fileID: 7466774501167972411}
   - component: {fileID: 7041233521818049471}
-  - component: {fileID: 7110284271495874962}
   m_Layer: 0
   m_Name: CircleTrayectory
   m_TagString: Untagged
@@ -108,30 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785c2e4afce04730a5c3eb7b90a538ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7110284271495874962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3635414795913544603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e66d1afcc13b47179e0659e098fbdd85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnRaycastHit2D:
-    m_PersistentCalls:
-      m_Calls: []
-  <HitBoxRect>k__BackingField:
-    serializedVersion: 2
-    x: -0.13
-    y: -0.12
-    width: 0.26
-    height: 0.24
-  <LayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &8071953351943925890
 GameObject:
   m_ObjectHideFlags: 0

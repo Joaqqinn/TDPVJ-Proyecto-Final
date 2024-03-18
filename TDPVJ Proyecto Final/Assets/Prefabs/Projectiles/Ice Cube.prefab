@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4386162915216693256}
   - component: {fileID: 4386162915216693303}
   - component: {fileID: 4386162915216693302}
+  - component: {fileID: -6899436878994754523}
   - component: {fileID: 4386162915216693258}
   m_Layer: 0
   m_Name: Ice Cube
@@ -90,6 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ApplyContinuously>k__BackingField: 1
   <Speed>k__BackingField: 17
+  <ThrowTheMouse>k__BackingField: 0
+  <ReturnToPlayer>k__BackingField: 0
+  <ReturnToPlayerCounter>k__BackingField: 0
+  <ReturnTheWeaponNotVisible>k__BackingField: 0
 --- !u!114 &4386162915216693262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +159,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnRaycastHit:
+    m_PersistentCalls:
+      m_Calls: []
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
@@ -251,9 +259,38 @@ MonoBehaviour:
       m_Calls: []
   <LayerMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   <InactiveSortingLayerName>k__BackingField: 
   <CheckDistance>k__BackingField: 0
+  returnToPlayer: 0
+--- !u!114 &-6899436878994754523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4386162915216693300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cccbbe34820bd846a28d2a64d362695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setStuck:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4386162915216693260}
+        m_TargetAssemblyTypeName: Bardent.ObjectPoolSystem.ObjectPoolItem, Assembly-CSharp
+        m_MethodName: ReturnItem
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <TimeSpawnToDeactivate>k__BackingField: 2
 --- !u!114 &4386162915216693258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +304,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactParticles: {fileID: 3331873728183600636, guid: a8166c556bb4a1e4dac9054f3df0d662, type: 3}
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!1 &4386162915301192358
 GameObject:
   m_ObjectHideFlags: 0

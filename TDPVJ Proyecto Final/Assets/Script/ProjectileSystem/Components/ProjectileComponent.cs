@@ -80,7 +80,6 @@ namespace Bardent.ProjectileSystem.Components
             projectile.OnReset -= ResetProjectile;
             projectile.OnReceiveDataPackage -= HandleReceiveDataPackage;
         }
-
         #endregion
     }
 }

@@ -22,8 +22,10 @@ public class Player : MonoBehaviour
     public PlayerDashState DashState { get; private set; }
     public PlayerCrouchIdleState CrouchIdleState { get; private set; }
     public PlayerSlideState SlideState { get; private set; }
+    public PlayerGrabWeaponState GrabWeaponState { get; private set; }
     public PlayerAttackState PrimaryAttackState { get; private set; }
     public PlayerAttackState SecondaryAttackState { get; private set; }
+    public PlayerAttackState TertiaryAttackState { get; private set; }
 
     [SerializeField]
     private PlayerData playerData;
@@ -48,19 +50,22 @@ public class Player : MonoBehaviour
 
     private Weapon primaryWeapon;
     private Weapon secondaryWeapon;
-    
+    private Weapon tertiaryWeapon;
+
     #endregion
 
     #region Unity Callback Functions
     private void Awake()
     {
         Core = GetComponentInChildren<Core>();
-
+        
         primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<Weapon>();
         secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<Weapon>();
-        
+        tertiaryWeapon = transform.Find("TertiaryWeapon").GetComponent<Weapon>();
+
         primaryWeapon.SetCore(Core);
         secondaryWeapon.SetCore(Core);
+        tertiaryWeapon.SetCore(Core);
 
         Stats = Core.GetCoreComponent<Stats>();
         InteractableDetector = Core.GetCoreComponent<InteractableDetector>();
@@ -78,8 +83,10 @@ public class Player : MonoBehaviour
         DashState = new PlayerDashState(this, StateMachine, playerData, "inAir");
         CrouchIdleState = new PlayerCrouchIdleState(this, StateMachine, playerData, "crouch");
         SlideState = new PlayerSlideState(this, StateMachine, playerData, "slide");
+        GrabWeaponState = new PlayerGrabWeaponState(this, StateMachine, playerData, "grabWeapon", primaryWeapon);
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon, CombatInputs.primary);
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon, CombatInputs.secondary);
+        TertiaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", tertiaryWeapon, CombatInputs.tertiary);
     }
 
     private void Start()

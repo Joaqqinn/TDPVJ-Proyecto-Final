@@ -22,12 +22,14 @@ namespace Bardent.ProjectileSystem.Components
 
         private Transform _transform;
 
+        private ProjectileParticles projectileParticles;
+
         private void CheckHitBox()
         {
             hits = Physics2D.BoxCastAll(transform.TransformPoint(HitBoxRect.center), HitBoxRect.size,
                 _transform.rotation.eulerAngles.z, _transform.right, checkDistance, LayerMask);
 
-            if (hits.Length <= 0) return;
+            if (hits.Length <= 0 || projectileParticles.runOneTime) return;
 
             OnRaycastHit2D?.Invoke(hits);
         }
@@ -40,6 +42,8 @@ namespace Bardent.ProjectileSystem.Components
 
             // Just caching the transform based on repeated use (Recommendation from Rider IDE)
             _transform = transform;
+
+            projectileParticles = GetComponent<ProjectileParticles>();
         }
 
         protected override void FixedUpdate()

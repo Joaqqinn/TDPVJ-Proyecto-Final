@@ -1,3 +1,4 @@
+using Bardent.Weapons;
 using UnityEngine;
 
 public class PlayerSlideState : PlayerAbilityState {
@@ -10,6 +11,7 @@ public class PlayerSlideState : PlayerAbilityState {
     private Vector2 slideDirection;
     private Vector2 slideDirectionInput;
     private Vector2 lastAIPos;
+
     public PlayerSlideState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -25,6 +27,7 @@ public class PlayerSlideState : PlayerAbilityState {
 
         Time.timeScale = playerData.slideHoldTimeScale;
         startTime = Time.unscaledTime;
+
     }
 
     public override void Exit()

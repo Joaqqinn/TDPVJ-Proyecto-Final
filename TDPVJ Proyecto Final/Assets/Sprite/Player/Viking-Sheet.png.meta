@@ -2393,7 +2393,7 @@ TextureImporter:
         x: 37
         y: 265
         width: 32
-        height: 45
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2414,7 +2414,7 @@ TextureImporter:
         x: 151
         y: 265
         width: 32
-        height: 45
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2435,7 +2435,7 @@ TextureImporter:
         x: 248
         y: 265
         width: 81
-        height: 37
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2454,9 +2454,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 353
-        y: 264
+        y: 265
         width: 101
-        height: 38
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2477,9 +2477,9 @@ TextureImporter:
         x: 469
         y: 265
         width: 101
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 46
+      alignment: 9
+      pivot: {x: 0.49, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2498,9 +2498,9 @@ TextureImporter:
         x: 584
         y: 265
         width: 100
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 46
+      alignment: 9
+      pivot: {x: 0.495, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2519,7 +2519,7 @@ TextureImporter:
         x: 699
         y: 265
         width: 100
-        height: 39
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2540,7 +2540,7 @@ TextureImporter:
         x: 813
         y: 265
         width: 102
-        height: 41
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2561,7 +2561,7 @@ TextureImporter:
         x: 927
         y: 265
         width: 104
-        height: 41
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
