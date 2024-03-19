@@ -46,6 +46,9 @@ MonoBehaviour:
         - name: Attack 4
           <Direction>k__BackingField: {x: 0, y: 0}
           <Velocity>k__BackingField: 0
+        - name: Attack 5
+          <Direction>k__BackingField: {x: 0, y: 0}
+          <Velocity>k__BackingField: 0
     00000001:
       type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -77,6 +80,14 @@ MonoBehaviour:
             width: 1.73
             height: 2.96
         - name: Attack 4
+          Debug: 1
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: -2.01
+            y: -1.1
+            width: 3.99
+            height: 1.53
+        - name: Attack 5
           Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
@@ -100,6 +111,8 @@ MonoBehaviour:
         - name: Attack 3
           <Amount>k__BackingField: 15
         - name: Attack 4
+          <Amount>k__BackingField: 10
+        - name: Attack 5
           <Amount>k__BackingField: 0
     00000003:
       type: {class: KnockBackData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
@@ -116,7 +129,10 @@ MonoBehaviour:
         - name: Attack 3
           <Angle>k__BackingField: {x: 1, y: 3}
           <Strength>k__BackingField: 20
-        - name: Attack 3
+        - name: Attack 4
+          <Angle>k__BackingField: {x: 0, y: 0}
+          <Strength>k__BackingField: 0
+        - name: Attack 5
           <Angle>k__BackingField: {x: 0, y: 0}
           <Strength>k__BackingField: 0
     00000004:
@@ -133,6 +149,8 @@ MonoBehaviour:
           <Amount>k__BackingField: 0
         - name: Attack 4
           <Amount>k__BackingField: 0
+        - name: Attack 5
+          <Amount>k__BackingField: 0
     00000005:
       type: {class: ProjectileSpawnerData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -146,6 +164,8 @@ MonoBehaviour:
         - name: Attack 3
           <SpawnInfos>k__BackingField: []
         - name: Attack 4
+          <SpawnInfos>k__BackingField: []
+        - name: Attack 5
           <SpawnInfos>k__BackingField:
           - <Direction>k__BackingField: {x: 0, y: 0}
             <ProjectilePrefab>k__BackingField: {fileID: 4809027677894838873, guid: a692ebfe2e2c6be4e995d6f38e66d837, type: 3}
@@ -192,6 +212,10 @@ MonoBehaviour:
           <NumberOfPoints>k__BackingField: 0
           <SpaceBetwennPoints>k__BackingField: 0
         - name: Attack 4
+          <Point>k__BackingField: {fileID: 0}
+          <NumberOfPoints>k__BackingField: 0
+          <SpaceBetwennPoints>k__BackingField: 0
+        - name: Attack 5
           <Point>k__BackingField: {fileID: 3635414795913544603, guid: 301796093e6550f4180563d59efa9fde, type: 3}
           <NumberOfPoints>k__BackingField: 10
           <SpaceBetwennPoints>k__BackingField: 0.08

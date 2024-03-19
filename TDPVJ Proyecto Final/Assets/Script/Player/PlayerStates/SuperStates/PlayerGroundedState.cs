@@ -41,7 +41,7 @@ public class PlayerGroundedState : PlayerState
     private bool isTouchingWall;
     private bool isTouchingLedge;
     private bool dashInput;
-    private bool SpecialAttackInput;
+    private bool throwInput;
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData,
         string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -84,16 +84,16 @@ public class PlayerGroundedState : PlayerState
         jumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
-        SpecialAttackInput = player.InputHandler.ThrowInput;
+        throwInput = player.InputHandler.ThrowInput;
 
-        if (SpecialAttackInput && player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !weapon.ProjectileInMovement)
+        if (throwInput && player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !weapon.ProjectileInMovement)
         {
             Debug.Log("PRESIONADO");
-            weapon.SetCurrentAttackCounter(3);
+            weapon.SetCurrentAttackCounter(4);
             stateMachine.ChangeState(player.PrimaryAttackState);
         }
-        else if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling && player.PrimaryAttackState.CanTransitionToAttackState() && !weapon.ProjectileInMovement)
-        { 
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling && player.PrimaryAttackState.CanTransitionToAttackState() && !weapon.ProjectileInMovement && yInput != -1)
+        {
             stateMachine.ChangeState(player.PrimaryAttackState);
         }
         else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary] && !isTouchingCeiling && player.SecondaryAttackState.CanTransitionToAttackState())

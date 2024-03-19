@@ -13,8 +13,9 @@ public class PlayerAbilityState : PlayerState {
 	private CollisionSenses collisionSenses;
 
 	private bool isGrounded;
+	private int yInput;
 
-	public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName) {
+    public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName) {
 	}
 
 	public override void DoChecks() {
@@ -38,11 +39,16 @@ public class PlayerAbilityState : PlayerState {
 	public override void LogicUpdate() {
 		base.LogicUpdate();
 
+        yInput = player.InputHandler.NormInputY;
+        
 		if (isAbilityDone) {
-			if (isGrounded && Movement?.CurrentVelocity.y < 0.01f) {
+			if(yInput == -1) {
+                stateMachine.ChangeState(player.CrouchIdleState);
+            }
+			else if (isGrounded && Movement?.CurrentVelocity.y < 0.01f) {
 				stateMachine.ChangeState(player.IdleState);
 			} else {
-				stateMachine.ChangeState(player.InAirState);
+                stateMachine.ChangeState(player.InAirState);
 			}
 		}
 	}

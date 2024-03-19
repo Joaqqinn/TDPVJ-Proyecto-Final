@@ -12,11 +12,19 @@ public class PlayerGrabWeaponState : PlayerGroundedState
     public PlayerGrabWeaponState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName, Weapon weapon) : base(player, stateMachine, playerData, animBoolName)
     {
         this.weapon = weapon;
-    }   
+    }
+    private CollisionSenses CollisionSenses
+    {
+        get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses);
+    }
+
+    private CollisionSenses collisionSenses;
 
     private ParticleManager particleManager;
 
     private ParticleContainer particleContainer;
+
+    private bool isGrounded;
 
     public override void Enter()
     {
@@ -29,7 +37,7 @@ public class PlayerGrabWeaponState : PlayerGroundedState
 
         foreach (var particle in particleContainer.GetParticles())
         {
-            if(particle.name == "Dust")
+            if(particle.name == "Dust" && isGrounded)
             {
                 particleManager.StartParticlesRelative(particle, particleContainer.OffsetDustParticle1, Quaternion.identity);
                 particleManager.StartParticlesRelative(particle, particleContainer.OffsetDustParticle2, Quaternion.identity);
@@ -52,6 +60,15 @@ public class PlayerGrabWeaponState : PlayerGroundedState
             {
                 player.StateMachine.ChangeState(player.IdleState);
             }
+        }
+    }
+    public override void DoChecks()
+    {
+        base.DoChecks();
+
+        if (CollisionSenses)
+        {
+            isGrounded = CollisionSenses.Ground;
         }
     }
 }
