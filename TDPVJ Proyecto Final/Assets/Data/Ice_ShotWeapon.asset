@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ice_ShotWeapon
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: -8845434035057206659, guid: 7698f902a8e73cb4b88c4738f7fb0ff5, type: 3}
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Ice Shot
   <Description>k__BackingField: 
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 160d83ab12614264b8f0e180985b5b99, type: 2}
   <NumberOfAttacks>k__BackingField: 1

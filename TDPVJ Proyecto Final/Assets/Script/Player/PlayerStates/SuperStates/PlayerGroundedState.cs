@@ -92,6 +92,11 @@ public class PlayerGroundedState : PlayerState
             weapon.SetCurrentAttackCounter(4);
             stateMachine.ChangeState(player.PrimaryAttackState);
         }
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.tertiary] && player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !weapon.ProjectileInMovement)
+        {
+            weapon.SetCurrentAttackCounter(5);
+            stateMachine.ChangeState(player.PrimaryAttackState);
+        }
         else if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling && player.PrimaryAttackState.CanTransitionToAttackState() && !weapon.ProjectileInMovement && yInput != -1)
         {
             stateMachine.ChangeState(player.PrimaryAttackState);

@@ -94,8 +94,8 @@ public class Player : MonoBehaviour
         Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
 
-        InputHandler.OnInteractInputChanged += InteractableDetector.TryInteract;
-        
+        InputHandler.OnInteractWeaponInventoy += InteractableDetector.TryInteract;
+
         RB = GetComponent<Rigidbody2D>();
         MovementCollider = GetComponent<BoxCollider2D>();
         

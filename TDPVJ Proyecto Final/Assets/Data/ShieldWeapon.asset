@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: ShieldWeapon
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 787919979606411165, guid: 7698f902a8e73cb4b88c4738f7fb0ff5, type: 3}
+  <Name>k__BackingField: Escudo
+  <Description>k__BackingField: 
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: cae0b63b23019314a84c3ffe7caff613, type: 2}
   <NumberOfAttacks>k__BackingField: 0
   <ComponentData>k__BackingField:
@@ -36,6 +39,12 @@ MonoBehaviour:
         attackData:
         - name: 
           <BlockDirectionInformation>k__BackingField: []
+          <BlockWindowStart>k__BackingField:
+            <Duration>k__BackingField: 0
+            <Phase>k__BackingField: 0
+          <BlockWindowEnd>k__BackingField:
+            <Duration>k__BackingField: 0
+            <Phase>k__BackingField: 0
           <Particles>k__BackingField: {fileID: 8619918458129954762, guid: d4351aec9af290d4581d50f34266eb86, type: 3}
           <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}
     00000002:
@@ -68,6 +77,12 @@ MonoBehaviour:
             DamageAbsorption: 0
             KnockBackAbsorption: 0
             PoiseDamageAbsorption: 0
+          <ParryWindowStart>k__BackingField:
+            <Duration>k__BackingField: 0
+            <Phase>k__BackingField: 0
+          <ParryWindowEnd>k__BackingField:
+            <Duration>k__BackingField: 0
+            <Phase>k__BackingField: 0
           <Particles>k__BackingField: {fileID: 8619918458129954762, guid: d4351aec9af290d4581d50f34266eb86, type: 3}
           <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}
     00000005:

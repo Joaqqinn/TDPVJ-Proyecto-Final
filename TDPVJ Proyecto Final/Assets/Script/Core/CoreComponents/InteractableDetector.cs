@@ -20,10 +20,12 @@ namespace Bardent.CoreSystem
         [ContextMenu("TryInteract")]
         public void TryInteract(bool inputValue)
         {
-            if(!inputValue || closestInteractable is null)
-                return;
-            
             OnTryInteract?.Invoke(closestInteractable);
+
+            /*if (!inputValue || closestInteractable is null)
+                return;
+
+            OnTryInteract?.Invoke(closestInteractable);*/
         }
         
         private void Update()

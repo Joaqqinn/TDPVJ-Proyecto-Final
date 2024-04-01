@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Reflection;
 using Bardent.Interaction;
 using Bardent.Interaction.Interactables;
+using Bardent.UI;
 using Bardent.Weapons;
+using UnityEngine;
 
 namespace Bardent.CoreSystem
 {
@@ -17,14 +20,18 @@ namespace Bardent.CoreSystem
 
         private WeaponPickup weaponPickup;
 
+        [SerializeField] private WeaponInfoUI[] newWeaponInfo;
+
+        private int index;
+
         private void HandleTryInteract(IInteractable interactable)
         {
-            if (!(interactable is WeaponPickup pickup))
-                return;
+            //if (!(interactable is WeaponPickup pickup))
+            //    return;
 
-            weaponPickup = pickup;
+            //weaponPickup = pickup;
 
-            newWeaponData = weaponPickup.GetContext();
+            //newWeaponData = weaponPickup.GetContext();
 
             if (weaponInventory.TryGetEmptyIndex(out var index))
             {
@@ -33,28 +40,37 @@ namespace Bardent.CoreSystem
                 newWeaponData = null;
                 return;
             }
-
+            //CAMBIA LA INFORMACION QUE APARECE EN EL RECUADRO
             OnChoiceRequested?.Invoke(new WeaponSwapChoiceRequest(
                 HandleWeaponSwapChoice,
                 weaponInventory.GetWeaponSwapChoices(),
-                newWeaponData
+                weaponInventory.weaponData
             ));
         }
 
+        //SE ENCARGA DE HACER EL SWAP DE ARMAS Y TAMBIEN MANEJA EL ICONO CON EL QUE INTERACTUAMOS
         private void HandleWeaponSwapChoice(WeaponSwapChoice choice)
         {
-            if (!weaponInventory.TrySetWeapon(newWeaponData, choice.Index, out var oldData)) 
+            //Cambiamos el arma nueva por la vieja
+            if (!weaponInventory.TrySetWeapon(weaponInventory.weaponData[index], choice.Index, out var oldData)) 
                 return;
-            
+            //Ponemos el arma vieja en la posicion de anterior de la nueva
+            if (!weaponInventory.TrySetWeapon(oldData, index, out weaponInventory.weaponData[index]))
+                return;
+
             newWeaponData = null;
 
-            OnWeaponDiscarded?.Invoke(oldData);
+            //OnWeaponDiscarded?.Invoke(oldData);
                 
             if (weaponPickup is null)
                 return;
 
             weaponPickup.Interact();
             
+        }
+        private void GetIndex(int i)
+        {
+            index = i;
         }
 
         protected override void Awake()
@@ -68,12 +84,22 @@ namespace Bardent.CoreSystem
         private void OnEnable()
         {
             interactableDetector.OnTryInteract += HandleTryInteract;
+
+            foreach (WeaponInfoUI NewweaponInfoUI in newWeaponInfo)
+            {
+                NewweaponInfoUI.IndexSelected += GetIndex;
+            }  
         }
 
 
         private void OnDisable()
         {
             interactableDetector.OnTryInteract -= HandleTryInteract;
+
+            foreach (WeaponInfoUI NewweaponInfoUI in newWeaponInfo)
+            {
+                NewweaponInfoUI.IndexSelected -= GetIndex;
+            }
         }
     }
 }

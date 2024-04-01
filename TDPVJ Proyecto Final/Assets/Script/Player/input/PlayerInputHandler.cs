@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    public event Action<bool> OnInteractInputChanged; 
+    public event Action<bool> OnInteractInputChanged;
+    public event Action<bool> OnInteractWeaponInventoy;
 
     private PlayerInput playerInput;
     private Camera cam;
@@ -55,13 +56,13 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started)
         {
-            OnInteractInputChanged?.Invoke(true);
+            OnInteractWeaponInventoy?.Invoke(true);
             return;
         }
 
         if (context.canceled)
         {
-            OnInteractInputChanged?.Invoke(false);
+            OnInteractWeaponInventoy?.Invoke(false);
         }
     }
 

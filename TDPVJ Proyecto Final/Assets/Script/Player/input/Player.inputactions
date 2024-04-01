@@ -60,18 +60,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "Throw",
                     "type": "Button",
-                    "id": "a0022466-8bdd-45f7-87d2-dc248026c7c0",
+                    "id": "8d848afa-b252-4cb3-a00b-0e97b2ba8af2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Throw",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "8d848afa-b252-4cb3-a00b-0e97b2ba8af2",
+                    "id": "a0022466-8bdd-45f7-87d2-dc248026c7c0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -257,17 +257,6 @@
                 },
                 {
                     "name": "",
-                    "id": "c28fd820-0da4-4790-9ef4-564337139040",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ed3bad76-2394-4524-9d9f-6dcab6eed74e",
                     "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
@@ -296,6 +285,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c28fd820-0da4-4790-9ef4-564337139040",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

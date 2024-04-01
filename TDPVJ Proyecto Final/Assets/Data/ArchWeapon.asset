@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: ArchWeapon
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 0}
-  <Name>k__BackingField: 
+  <Icon>k__BackingField: {fileID: -6024980785629365298, guid: 7698f902a8e73cb4b88c4738f7fb0ff5, type: 3}
+  <Name>k__BackingField: Arco
   <Description>k__BackingField: 
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: f6323173f1f345a4d9483c621efc6133, type: 2}
   <NumberOfAttacks>k__BackingField: 1

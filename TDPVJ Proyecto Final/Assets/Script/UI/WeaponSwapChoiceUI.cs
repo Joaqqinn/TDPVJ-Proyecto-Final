@@ -7,13 +7,12 @@ namespace Bardent.UI
 {
     public class WeaponSwapChoiceUI : MonoBehaviour
     {
-        public event Action<WeaponSwapChoice> OnChoiceSelected;
+        public event Action<int> IndexSelected;
 
         [SerializeField] private WeaponInfoUI weaponInfoUI;
         [SerializeField] private CombatInputs input;
-        [SerializeField] private Button button;
 
-        private WeaponSwapChoice weaponSwapChoice;
+        public WeaponSwapChoice weaponSwapChoice;
 
         public void TakeRelevantChoice(WeaponSwapChoice[] choices)
         {
@@ -32,21 +31,6 @@ namespace Bardent.UI
             weaponSwapChoice = choice;
 
             weaponInfoUI.PopulateUI(choice.WeaponData);
-        }
-
-        private void HandleClick()
-        {
-            OnChoiceSelected?.Invoke(weaponSwapChoice);
-        }
-
-        private void OnEnable()
-        {
-            button.onClick.AddListener(HandleClick);
-        }
-
-        private void OnDisable()
-        {
-            button.onClick.RemoveListener(HandleClick);
         }
     }
 }
