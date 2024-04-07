@@ -44,7 +44,7 @@ public class Entity : MonoBehaviour {
 		stats = Core.GetCoreComponent<Stats>();
 		parryReceiver = Core.GetCoreComponent<ParryReceiver>();
 
-		parryReceiver.OnParried += HandleParry;
+		//parryReceiver.OnParried += HandleParry;
 
 		currentHealth = entityData.maxHealth;
 		currentStunResistance = entityData.stunResistance;
@@ -59,7 +59,7 @@ public class Entity : MonoBehaviour {
 		Core.LogicUpdate();
 		stateMachine.currentState.LogicUpdate();
 
-		anim.SetFloat("yVelocity", Movement.RB.velocity.y);
+		//anim.SetFloat("yVelocity", Movement.RB.velocity.y);
 
 		if (Time.time >= lastDamageTime + entityData.stunRecoveryTime) {
 			ResetStunResistance();

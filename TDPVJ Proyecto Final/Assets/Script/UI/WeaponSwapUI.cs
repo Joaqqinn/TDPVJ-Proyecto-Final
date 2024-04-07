@@ -10,7 +10,7 @@ namespace Bardent.UI
     {
         [SerializeField] private WeaponSwap weaponSwap;
         [SerializeField] private WeaponInfoUI[] newWeaponInfo;
-        [SerializeField] private WeaponSwapChoiceUI weaponSwapChoiceUIs;
+        [SerializeField] private WeaponSwapChoiceUI[] weaponSwapChoiceUIs;
         [SerializeField] private GameManager gameManager;
         [SerializeField] private Button[] button;
 
@@ -31,7 +31,10 @@ namespace Bardent.UI
                 newWeaponInfo[i].PopulateUI(choiceRequest.NewWeaponData[i + 3]);
             }
 
-            weaponSwapChoiceUIs.TakeRelevantChoice(choiceRequest.Choices);
+            foreach(WeaponSwapChoiceUI NewWeaponSwapChoiceUI in weaponSwapChoiceUIs)
+            {
+                NewWeaponSwapChoiceUI.TakeRelevantChoice(choiceRequest.Choices);
+            }
 
             canvasGroup.alpha = 1f;
             canvasGroup.interactable = true;
@@ -93,7 +96,7 @@ namespace Bardent.UI
 
         private void HandleClick()
         {
-            OnChoiceSelected?.Invoke(weaponSwapChoiceUIs.weaponSwapChoice);
+            OnChoiceSelected?.Invoke(weaponSwapChoiceUIs[1].weaponSwapChoice);
         }
     }
 }
