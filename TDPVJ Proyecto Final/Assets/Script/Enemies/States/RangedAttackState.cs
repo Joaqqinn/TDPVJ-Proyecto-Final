@@ -6,6 +6,7 @@ using UnityEngine;
 public class RangedAttackState : AttackState
 {
     protected D_RangedAttackState stateData;
+    
 
     protected GameObject projectile;
     protected Projectile projectileScript;

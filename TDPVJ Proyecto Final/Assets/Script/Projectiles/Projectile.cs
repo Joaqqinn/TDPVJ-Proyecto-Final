@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
+using Bardent.CoreSystem;
+using Bardent.Combat.Damage;
 
 namespace Bardent.Projectiles
 {
     public class Projectile : MonoBehaviour
     {
-        //private AttackDetails attackDetails;
-
         private float speed;
         private float travelDistance;
         private float xStartPos;
+        private float damageAmount;
 
         [SerializeField]
         private float gravity;
@@ -43,8 +44,6 @@ namespace Bardent.Projectiles
         {
             if (!hasHitGround)
             {
-                //attackDetails.position = transform.position;
-
                 if (isGravityOn)
                 {
                     float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
@@ -59,10 +58,11 @@ namespace Bardent.Projectiles
             {
                 Collider2D damageHit = Physics2D.OverlapCircle(damagePosition.position, damageRadius, whatIsPlayer);
                 Collider2D groundHit = Physics2D.OverlapCircle(damagePosition.position, damageRadius, whatIsGround);
-
+                
                 if (damageHit)
                 {
-                    //damageHit.transform.SendMessage("Damage", attackDetails);
+                    IDamageable damageable = damageHit.GetComponent<IDamageable>();
+                    damageable.Damage(new DamageData(damageAmount, this.gameObject));
                     Destroy(gameObject);
                 }
 
@@ -86,7 +86,7 @@ namespace Bardent.Projectiles
         {
             this.speed = speed;
             this.travelDistance = travelDistance;
-            //attackDetails.damageAmount = damage;
+            this.damageAmount = damage;
         }
 
         private void OnDrawGizmos()

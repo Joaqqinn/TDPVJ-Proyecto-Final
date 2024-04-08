@@ -51,7 +51,7 @@ namespace Bardent.ProjectileSystem.Components
                     continue;
                 
                 damageable.Damage(new DamageData(amount, projectile.gameObject));
-                Debug.Log("DAMAGE ARROW");
+
                 OnDamage?.Invoke(damageable);
                 OnRaycastHit?.Invoke(hit);
 
