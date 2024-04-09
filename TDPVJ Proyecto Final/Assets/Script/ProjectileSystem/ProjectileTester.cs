@@ -37,10 +37,10 @@ namespace Bardent.ProjectileSystem
             var projectile = objectPools.GetPool(ProjectilePrefab).GetObject();
 
             projectile.Reset();
-            
+
             projectile.transform.position = transform.position;
             projectile.transform.rotation = transform.rotation;
-            
+
             projectile.SendDataPackage(DamageDataPackage);
 
             projectile.Init();

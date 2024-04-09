@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using Bardent.CoreSystem;
 using Bardent.Combat.Damage;
+using Bardent.ObjectPoolSystem;
+using Bardent.ProjectileSystem.DataPackages;
+using Bardent.Weapons.Components;
+using System;
 
 namespace Bardent.Projectiles
 {
-    public class Projectile : MonoBehaviour
+    public class ProjectileEnemy : MonoBehaviour
     {
+        ObjectPoolItem objectPoolItem;
+
         private float speed;
         private float travelDistance;
         private float xStartPos;
@@ -20,6 +26,7 @@ namespace Bardent.Projectiles
 
         private bool isGravityOn;
         private bool hasHitGround;
+        private bool hasHitPlayer;
 
         [SerializeField]
         private LayerMask whatIsGround;
@@ -31,7 +38,8 @@ namespace Bardent.Projectiles
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-
+            objectPoolItem = GetComponent<ObjectPoolItem>();
+            
             rb.gravityScale = 0.0f;
             rb.velocity = transform.right * speed;
 
@@ -44,8 +52,10 @@ namespace Bardent.Projectiles
         {
             if (!hasHitGround)
             {
+                Debug.Log("MOVE0");
                 if (isGravityOn)
                 {
+                    Debug.Log("MOVE");
                     float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 }
@@ -56,14 +66,19 @@ namespace Bardent.Projectiles
         {
             if (!hasHitGround)
             {
-                Collider2D damageHit = Physics2D.OverlapCircle(damagePosition.position, damageRadius, whatIsPlayer);
+                Collider2D[] damageHit = Physics2D.OverlapCircleAll(damagePosition.position, damageRadius, whatIsPlayer);
                 Collider2D groundHit = Physics2D.OverlapCircle(damagePosition.position, damageRadius, whatIsGround);
                 
-                if (damageHit)
+                foreach (Collider2D collider in damageHit)
                 {
-                    IDamageable damageable = damageHit.GetComponent<IDamageable>();
-                    damageable.Damage(new DamageData(damageAmount, this.gameObject));
-                    Destroy(gameObject);
+                    IDamageable damageable = collider.GetComponent<IDamageable>();
+
+                    if (damageable != null)
+                    {
+                        hasHitPlayer = true;
+                        damageable.Damage(new DamageData(damageAmount, this.gameObject));
+                    }
+                    objectPoolItem.ReturnItem(0);
                 }
 
                 if (groundHit)
@@ -71,6 +86,7 @@ namespace Bardent.Projectiles
                     hasHitGround = true;
                     rb.gravityScale = 0f;
                     rb.velocity = Vector2.zero;
+                    objectPoolItem.ReturnItem(3);
                 }
 
 
@@ -84,6 +100,15 @@ namespace Bardent.Projectiles
 
         public void FireProjectile(float speed, float travelDistance, float damage)
         {
+            Debug.Log("FIRE");
+            if (hasHitGround || hasHitPlayer)
+            {
+                hasHitGround = false;
+                hasHitPlayer = false;
+                rb.gravityScale = 0.0f;
+                rb.velocity = transform.right * speed;
+            }
+            
             this.speed = speed;
             this.travelDistance = travelDistance;
             this.damageAmount = damage;

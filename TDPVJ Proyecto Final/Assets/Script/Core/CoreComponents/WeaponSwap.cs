@@ -11,7 +11,7 @@ namespace Bardent.CoreSystem
     public class WeaponSwap : CoreComponent
     {
         public event Action<WeaponSwapChoiceRequest> OnChoiceRequested;
-        public event Action<WeaponDataSO> OnWeaponDiscarded;
+        //public event Action<WeaponDataSO> OnWeaponDiscarded;
 
         private InteractableDetector interactableDetector;
         private WeaponInventory weaponInventory;

@@ -39,7 +39,7 @@ namespace Bardent.CoreSystem
             movement = core.GetCoreComponent<Movement>();
         }
 
-        private void OnEnable()
+        /*private void OnEnable()
         {
             weaponSwap.OnWeaponDiscarded += HandleWeaponDiscarded;
         }
@@ -47,6 +47,6 @@ namespace Bardent.CoreSystem
         private void OnDisable()
         {
             weaponSwap.OnWeaponDiscarded -= HandleWeaponDiscarded;
-        }
+        }*/
     }
 }

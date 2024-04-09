@@ -485,12 +485,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1179625810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f827c221ca0329f4893eaa998d868415, type: 3}
+  m_Script: {fileID: 11500000, guid: f8837efa9b274644bc77bbad398a8969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 8782578977186487393, guid: 0b52356383de4614a81029d5309925ef, type: 3}
+  ProjectilePrefab: {fileID: 4386162915216693248, guid: cadbee63677846240b1728a5ffabc611, type: 3}
   DamageDataPackage:
-    <Amount>k__BackingField: 30
+    <Amount>k__BackingField: 10
+  ShotCooldown: 30
 --- !u!4 &1179625812
 Transform:
   m_ObjectHideFlags: 0
@@ -514,11 +515,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1454964380}
-  - component: {fileID: 1454964384}
-  - component: {fileID: 1454964382}
   - component: {fileID: 1454964379}
   - component: {fileID: 1454964381}
   - component: {fileID: 1454964383}
+  - component: {fileID: 1454964384}
+  - component: {fileID: 1454964382}
   m_Layer: 9
   m_Name: TestDamageable
   m_TagString: Untagged
@@ -626,7 +627,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1454964378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f052dbfa1b55543a3974d1e9996f5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 89f083d895194ce9b1fc788b191d6f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!50 &1454964383
@@ -659,7 +660,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1454964378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 435cb5d67f9820e47a0751d732b70798, type: 3}
+  m_Script: {fileID: 11500000, guid: 668e3b7990376684e84f071f2e0e0854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1523817958
@@ -789,11 +790,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1589837573}
-  - component: {fileID: 1589837572}
-  - component: {fileID: 1589837571}
   - component: {fileID: 1589837570}
   - component: {fileID: 1589837569}
   - component: {fileID: 1589837568}
+  - component: {fileID: 1589837572}
+  - component: {fileID: 1589837571}
   m_Layer: 9
   m_Name: TestDamageable (1)
   m_TagString: Untagged
@@ -908,7 +909,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1589837567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f052dbfa1b55543a3974d1e9996f5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 89f083d895194ce9b1fc788b191d6f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1589837572
@@ -920,7 +921,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1589837567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 435cb5d67f9820e47a0751d732b70798, type: 3}
+  m_Script: {fileID: 11500000, guid: 668e3b7990376684e84f071f2e0e0854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1589837573
@@ -977,6 +978,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactParticles: {fileID: 3331873728183600636, guid: a8166c556bb4a1e4dac9054f3df0d662, type: 3}
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1940303007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,6 +1016,7 @@ MonoBehaviour:
     m_Bits: 0
   <InactiveSortingLayerName>k__BackingField: 
   <CheckDistance>k__BackingField: 0
+  returnToPlayer: 0
 --- !u!114 &1940303008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,6 +1104,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnRaycastHit:
+    m_PersistentCalls:
+      m_Calls: []
   <LayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
@@ -1142,6 +1150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ApplyContinuously>k__BackingField: 1
   <Speed>k__BackingField: 17
+  <ThrowTheMouse>k__BackingField: 0
+  <ReturnToPlayer>k__BackingField: 0
+  <ReturnToPlayerCounter>k__BackingField: 0
+  <ReturnTheWeaponNotVisible>k__BackingField: 0
 --- !u!114 &1940303015
 MonoBehaviour:
   m_ObjectHideFlags: 0

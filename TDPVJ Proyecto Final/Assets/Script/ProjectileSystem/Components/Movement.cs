@@ -24,7 +24,6 @@ namespace Bardent.ProjectileSystem.Components
         
 
         Player player;
-        Camera cam;
         [NonSerialized] public Vector3 projectilePosition;
 
         StickToLayer stickToLayer;
@@ -100,7 +99,6 @@ namespace Bardent.ProjectileSystem.Components
             player = FindObjectOfType<Player>();
             stickToLayer = GetComponent<StickToLayer>();
             outOfCamera = GetComponent<OutOfCamera>();
-            cam = Camera.main;
 
             if (ThrowTheMouse) { SetThrowTheMouse(); }
 

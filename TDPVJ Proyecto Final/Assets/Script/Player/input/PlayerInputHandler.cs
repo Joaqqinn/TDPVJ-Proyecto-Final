@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    public event Action<bool> OnInteractInputChanged;
+    //public event Action<bool> OnInteractInputChanged;//
     public event Action<bool> OnInteractWeaponInventoy;
 
     private PlayerInput playerInput;

@@ -1,13 +1,11 @@
 ﻿using System;
 using Bardent.Weapons;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Bardent.UI
 {
     public class WeaponSwapChoiceUI : MonoBehaviour
     {
-        public event Action<int> IndexSelected;
 
         [SerializeField] private WeaponInfoUI weaponInfoUI;
         [SerializeField] private CombatInputs input;
