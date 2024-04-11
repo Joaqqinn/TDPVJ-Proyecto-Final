@@ -51,9 +51,9 @@ public class AttackState : State {
 
 	}
 
-	public virtual void FinishAttack() {
+    public virtual void FinishAttack() {
 		isAnimationFinished = true;
 	}
 
-	public void SetParryWindowActive(bool value) => parryReceiver.SetParryColliderActive(value);
+    public void SetParryWindowActive(bool value) => parryReceiver.SetParryColliderActive(value);
 }

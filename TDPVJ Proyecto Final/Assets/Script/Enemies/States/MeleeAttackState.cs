@@ -18,8 +18,8 @@ public class MeleeAttackState : AttackState {
 	public MeleeAttackState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttack stateData) : base(etity, stateMachine, animBoolName, attackPosition) {
 		this.stateData = stateData;
 	}
-	
-	public override void TriggerAttack() {
+
+    public override void TriggerAttack() {
 		base.TriggerAttack();
 
 		Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(attackPosition.position, stateData.attackRadius, stateData.whatIsPlayer);

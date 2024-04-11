@@ -55,10 +55,7 @@ public class RangedAttackState : AttackState
     {
         base.TriggerAttack();
 
-        /*projectile = GameObject.Instantiate(stateData.projectile, attackPosition.position, attackPosition.rotation);
-        projectileScript = projectile.GetComponent<Projectile>();
-        projectileScript.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage);*/
-
+        //Creamos un objectpool para poder reutilizar
         var projectile = objectPools.GetPool(stateData.projectile).GetObject();
 
         projectile.Reset();
