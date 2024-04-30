@@ -86,8 +86,12 @@ public class Entity : MonoBehaviour {
 	public virtual bool CheckPlayerInCloseRangeAction() {
 		return Physics2D.Raycast(playerCheck.position, transform.right, entityData.closeRangeActionDistance, entityData.whatIsPlayer);
 	}
+    public virtual bool CheckPlayerInChargeRangeAction()
+    {
+        return Physics2D.Raycast(playerCheck.position, transform.right, entityData.chargeRangeAction, entityData.whatIsPlayer);
+    }
 
-	public virtual void DamageHop(float velocity) {
+    public virtual void DamageHop(float velocity) {
 		velocityWorkspace.Set(Movement.RB.velocity.x, velocity);
 		Movement.RB.velocity = velocityWorkspace;
 	}
@@ -105,6 +109,7 @@ public class Entity : MonoBehaviour {
 			Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * entityData.closeRangeActionDistance), 0.2f);
 			Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * entityData.minAgroDistance), 0.2f);
 			Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * entityData.maxAgroDistance), 0.2f);
-		}
+            Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * entityData.chargeRangeAction), 0.2f);
+        }
 	}
 }

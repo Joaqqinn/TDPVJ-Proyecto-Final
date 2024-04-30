@@ -10,6 +10,9 @@ namespace Bardent.Projectiles
 {
     public class ProjectileEnemy : MonoBehaviour
     {
+
+        public event Action OnSetDamagePosition;
+
         ObjectPoolItem objectPoolItem;
 
         private float speed;
@@ -46,16 +49,25 @@ namespace Bardent.Projectiles
             isGravityOn = false;
 
             xStartPos = transform.position.x;
+
+            OnSetDamagePosition += SetDamagePosition;
+        }
+
+        private void OnEnable()
+        {
+            damagePosition.position = transform.position;
+        }
+        private void OnDisable()
+        {
+            OnSetDamagePosition -= SetDamagePosition;
         }
 
         private void Update()
         {
             if (!hasHitGround)
             {
-                Debug.Log("MOVE0");
                 if (isGravityOn)
                 {
-                    Debug.Log("MOVE");
                     float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 }
@@ -114,6 +126,10 @@ namespace Bardent.Projectiles
             this.damageAmount = damage;
         }
 
+        private void SetDamagePosition()
+        {
+            damagePosition.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+        }
         private void OnDrawGizmos()
         {
             Gizmos.DrawWireSphere(damagePosition.position, damageRadius);

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926c6259798cfbb41be5ce7926eeaec8, type: 3}
   m_Name: E3_InactiveStateData
   m_EditorClassIdentifier: 
-  activeRadius: 3.54
+  activeRadius: 0.91
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
