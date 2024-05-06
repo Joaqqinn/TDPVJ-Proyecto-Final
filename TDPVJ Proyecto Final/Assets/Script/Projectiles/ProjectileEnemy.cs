@@ -5,6 +5,7 @@ using Bardent.ObjectPoolSystem;
 using Bardent.ProjectileSystem.DataPackages;
 using Bardent.Weapons.Components;
 using System;
+using Bardent.ProjectileSystem.Components;
 
 namespace Bardent.Projectiles
 {
@@ -14,6 +15,7 @@ namespace Bardent.Projectiles
         public event Action OnSetDamagePosition;
 
         ObjectPoolItem objectPoolItem;
+        ProjectileParticles projectileParticles;
 
         private float speed;
         private float travelDistance;
@@ -24,6 +26,8 @@ namespace Bardent.Projectiles
         private float gravity;
         [SerializeField]
         private float damageRadius;
+        [SerializeField]
+        private float objectPoolCooldown;
 
         private Rigidbody2D rb;
 
@@ -42,7 +46,8 @@ namespace Bardent.Projectiles
         {
             rb = GetComponent<Rigidbody2D>();
             objectPoolItem = GetComponent<ObjectPoolItem>();
-            
+            projectileParticles = GetComponent<ProjectileParticles>();
+
             rb.gravityScale = 0.0f;
             rb.velocity = transform.right * speed;
 
@@ -89,6 +94,7 @@ namespace Bardent.Projectiles
                     {
                         hasHitPlayer = true;
                         damageable.Damage(new DamageData(damageAmount, this.gameObject));
+                        projectileParticles.SpawnImpactParticles(transform.position, transform.rotation);
                     }
                     objectPoolItem.ReturnItem(0);
                 }
@@ -98,7 +104,8 @@ namespace Bardent.Projectiles
                     hasHitGround = true;
                     rb.gravityScale = 0f;
                     rb.velocity = Vector2.zero;
-                    objectPoolItem.ReturnItem(3);
+                    projectileParticles.SpawnImpactParticles(transform.position, transform.rotation);
+                    objectPoolItem.ReturnItem(objectPoolCooldown);
                 }
 
 

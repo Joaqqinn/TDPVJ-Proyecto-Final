@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 3
   damageRadius: 0.15
+  objectPoolCooldown: 3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256

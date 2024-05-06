@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E4_PlayerDetectedState : PlayerDetectedState
+public class E5_PlayerDetectedState : PlayerDetectedState
 {
-    private Enemy4 enemy;
+    private Enemy5 enemy;
 
-    public E4_PlayerDetectedState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetected stateData, Enemy4 enemy) : base(etity, stateMachine, animBoolName, stateData)
+    public E5_PlayerDetectedState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetected stateData, Enemy5 enemy) : base(etity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -33,10 +33,6 @@ public class E4_PlayerDetectedState : PlayerDetectedState
         if (performCloseRangeAction)
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
-        }
-        else if (performChargeRangeAction)
-        {
-            stateMachine.ChangeState(enemy.chargeState);
         }
         else if (performLongRangeAction)
         {
