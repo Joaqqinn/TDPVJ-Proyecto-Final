@@ -14,7 +14,7 @@ public class Entity : MonoBehaviour {
 
 	public Animator anim { get; private set; }
 	public AnimationToStatemachine atsm { get; private set; }
-	public int lastDamageDirection { get; private set; }
+	//public int lastDamageDirection { get; private set; }
 	public Core Core { get; private set; }
 
 	[SerializeField]

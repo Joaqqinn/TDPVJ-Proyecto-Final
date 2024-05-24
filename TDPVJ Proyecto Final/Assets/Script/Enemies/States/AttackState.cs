@@ -12,8 +12,9 @@ public class AttackState : State {
 
 	protected bool isAnimationFinished;
 	protected bool isPlayerInMinAgroRange;
+    protected bool performCloseRangeAction;
 
-	public AttackState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition) : base(etity, stateMachine, animBoolName) {
+    public AttackState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition) : base(etity, stateMachine, animBoolName) {
 		this.attackPosition = attackPosition;
 
 		movement = core.GetCoreComponent<Movement>();
@@ -24,7 +25,8 @@ public class AttackState : State {
 		base.DoChecks();
 
 		isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
-	}
+        performCloseRangeAction = entity.CheckPlayerInCloseRangeAction();
+    }
 
 	public override void Enter() {
 		base.Enter();

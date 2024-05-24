@@ -52,7 +52,7 @@ namespace Bardent.CoreSystem
 
         public void SetVelocityX(float velocity)
         {
-            workspace.Set(velocity, CurrentVelocity.y);
+            workspace.Set(velocity, CurrentVelocity.y); 
             SetFinalVelocity();
         }
 
@@ -61,7 +61,6 @@ namespace Bardent.CoreSystem
             workspace.Set(CurrentVelocity.x, velocity);
             SetFinalVelocity();
         }
-
         private void SetFinalVelocity()
         {
             if (CanSetVelocity)
@@ -90,6 +89,12 @@ namespace Bardent.CoreSystem
             offset.x *= FacingDirection;
 
             return transform.position + (Vector3)offset;
+        }
+        public Vector2 DefiningZeroAxis(Vector2 offset)
+        {
+            //offset.x *= FacingDirection;
+
+            return (Vector3)offset - transform.position;
         }
 
         #endregion
