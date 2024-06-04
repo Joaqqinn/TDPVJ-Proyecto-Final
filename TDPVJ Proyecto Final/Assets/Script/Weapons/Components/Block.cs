@@ -24,7 +24,7 @@ namespace Bardent.Weapons.Components
         private CoreSystem.Movement movement;
         private ParticleManager particleManager;
 
-        private bool isBlockWindowActive;
+        private bool isBlockWindowActive = true;
         private bool shouldUpdate;
 
         private float nextWindowTriggerTime;

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: E1_MeleeAttackStateData
   m_EditorClassIdentifier: 
   attackRadius: 1.4
-  attackDamage: 10
-  knockbackAngle: {x: 1, y: 1}
+  attackDamage: 20
+  knockbackAngle: {x: 0, y: 0}
   knockbackStrength: 5
   PoiseDamage: 100
   whatIsPlayer:

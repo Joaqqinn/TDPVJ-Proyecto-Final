@@ -10,8 +10,6 @@ public class E6_MeleeAttackState : MeleeAttackState
         this.enemy = enemy;
      
     }
-
-
     public override void DoChecks()
     {
         base.DoChecks();

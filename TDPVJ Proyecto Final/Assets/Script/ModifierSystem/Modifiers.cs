@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEngine;
+
 
 namespace Bardent.ModifierSystem
 {
@@ -17,7 +20,6 @@ namespace Bardent.ModifierSystem
         public TValueType ApplyAllModifiers(TValueType initialValue)
         {
             var modifiedValue = initialValue;
-
             foreach (var modifier in modifierList)
             {
                 modifiedValue = modifier.ModifyValue(modifiedValue);
