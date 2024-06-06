@@ -68,16 +68,16 @@ MonoBehaviour:
         attackData:
         - name: 
           <ParryDirectionalInformation>k__BackingField:
-          - MinAngle: 0
-            MaxAngle: 0
-            DamageAbsorption: 0
-            KnockBackAbsorption: 0
-            PoiseDamageAbsorption: 0
+          - MinAngle: -90
+            MaxAngle: 90
+            DamageAbsorption: 1
+            KnockBackAbsorption: 0.85
+            PoiseDamageAbsorption: 1
           <ParryWindowStart>k__BackingField:
             <Duration>k__BackingField: 0
             <Phase>k__BackingField: 0
           <ParryWindowEnd>k__BackingField:
-            <Duration>k__BackingField: 0
+            <Duration>k__BackingField: 0.25
             <Phase>k__BackingField: 0
           <Particles>k__BackingField: {fileID: 8619918458129954762, guid: d4351aec9af290d4581d50f34266eb86, type: 3}
           <ParticlesOffset>k__BackingField: {x: 0.75, y: -0.25}
